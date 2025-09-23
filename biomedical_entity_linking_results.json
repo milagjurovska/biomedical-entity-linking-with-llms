@@ -1,0 +1,112 @@
+[
+  {
+    "subject_id": 9,
+    "category": "Discharge summary",
+    "text": "Name: [**Known lastname 10050**], [**Known firstname 779**] Unit No: [**Numeric Identifier 10051**] Admission Date: [**2149-11-9**] Discharge Date: [**2149-11-14**] Date of Birth: [**2108-1-26**] Sex: M Service: Despite mannital and hyperventilation on the [**2149-11-13**], patient continued to neurologically decline. A brain death exam was done showing that the patient had dilated unreactive pupils with no evidence of a corneal or gag reflex. He also did not respond to any noxious stimuli despite being off propofol. An apnea test was performed allowing the pCO2 to rise above 60, and the patient still did not take any breath during the 10 minute interval. At this time he was declared brain death. His family requested no organ donor or autopsy be done. [**First Name8 (NamePattern2) 2121**] [**First Name8 (NamePattern2) **] [**Last Name (NamePattern1) **], M.D. [**MD Number(1) 9973**] Dictated By:[**Last Name (NamePattern1) 4387**] MEDQUIST36 D: [**2149-11-23**] 23:19 T: [**2149-11-24**] 06:19 JOB#: [**Job Number 10052**]",
+    "entities": [],
+    "metrics": {
+      "total_entities": 0,
+      "successful_links": 0,
+      "linking_accuracy": 0
+    }
+  },
+  {
+    "subject_id": 13,
+    "category": "Discharge summary",
+    "text": "Name: [**Known lastname 9900**], [**Known firstname **] C Unit No: [**Numeric Identifier 9993**] Admission Date: [**2167-1-8**] Discharge Date: [**2167-1-15**] Date of Birth: [**2127-2-27**] Sex: F Service: Cardiac surgery If the previously right coronary artery stenosis is a cause for concern or patient morbidity in the future, this lesion can certainly be addressed percutaneously with balloon angiography. She will be followed very closely by Dr. [**Last Name (STitle) 677**] as an outpatient, and if this lesion does cause her problems, this may be addressed. [**Doctor Last Name **] [**Last Name (Prefixes) **], M.D. [**MD Number(1) 681**] Dictated By:[**Last Name (NamePattern1) 4660**] MEDQUIST36 D: [**2167-1-14**] 16:39 T: [**2167-1-14**] 18:51 JOB#: [**Job Number 9994**]",
+    "entities": [],
+    "metrics": {
+      "total_entities": 0,
+      "successful_links": 0,
+      "linking_accuracy": 0
+    }
+  },
+  {
+    "subject_id": 18,
+    "category": "Discharge summary",
+    "text": "Name: [**Known lastname 4919**] JR,[**Known firstname **] P Unit No: [**Numeric Identifier 4920**] Admission Date: [**2167-9-30**] Discharge Date: [**2167-10-2**] Date of Birth: [**2116-11-29**] Sex: M Service: PSYCHIATRY Allergies: Bactrim Attending:[**First Name3 (LF) 4921**] Addendum: MEDICATIONS ON ADMISSION: Klonopin 3mg PO BID Lexapro 20mg PO daily Nortriptyline 50mg PO daily Crestor 10mg PO daily Seroquel 50mg PO TID Trazodone 200mg PO qHS:PRN Insulin, standing and SS MEDICATIONS ON DISCHARGE: Klonopin 3mg PO BID Lexapro 20mg PO daily Nortriptyline 50mg PO daily Crestor 10mg PO daily Seroquel 50mg PO TID Trazodone 200mg PO qHS:PRN Ambien 10mg PO qHS:PRN Insulin, standing and SS Discharge Disposition: Extended Care Facility: [**Hospital1 8**] [**First Name11 (Name Pattern1) 986**] [**Last Name (NamePattern1) 987**] MD [**MD Number(1) 988**] Completed by:[**2167-10-2**]",
+    "entities": [],
+    "metrics": {
+      "total_entities": 0,
+      "successful_links": 0,
+      "linking_accuracy": 0
+    }
+  },
+  {
+    "subject_id": 23,
+    "category": "Nursing",
+    "text": "78 year old, pleasant male. Resection of known meningioma, which was diagnosed 3 years ago. Recently, patient was working in his garage and began to feel his right leg becoming numb and heavy. He began to have a seizure with shaking to his right leg, later his right arm. Taken by ambulance to [**Hospital3 **] hospital, then transferred to [**Hospital1 54**]. Neoplasm, Brain Assessment: AAO x 3. Pleasant. Afebrile. Minimal pain only to neck where central line was inserted. Administered 650mg Tylenol as ordered. MAE x 4 strongly against resistance. Right leg weaker than left. States that at times, right leg feels numb. Able to discriminate between sharp and dull from left to right sides of body from head to toe correctly. Head CT completed this evening. Hypertensive with SBP >140. Initially Nitriprusside started, then transitioned to Nicardipine gtt. Goal for SBP <140. Maintained well with Nicardipine gtt. Pt hadn t taken PO anti-hypertensive meds this am. Administered as ordered this afternoon. Goal would be to administer PM meds tonight and titrate off Nicardipine. Lungs clear with diminished bases on 2L NC. No cough or expectoration of secretions. Encouraged patient to cough and deep breath. Abdomen soft, non-tender, positive bowel sounds throughout abdomen. Taking PO liquids well. [**Month (only) 60**] advance diet as tolerated. Skin intact. Surgical incision to superior occipital area, linear saggital incision closed with surgical staples and dermabond. Some scant serous drainage noted on pillow. Per Neuro sx team, can be left OTA. Plan: Maintain SBP < 140. Titrate off Nicardipine gtt. Monitor neuro status closely. Continue pulmonary toileting. Advance diet as tolerated.",
+    "entities": [],
+    "metrics": {
+      "total_entities": 0,
+      "successful_links": 0,
+      "linking_accuracy": 0
+    }
+  },
+  {
+    "subject_id": 23,
+    "category": "Nursing",
+    "text": "HPI: 75yo RHM with CAD s/p CABG x4, AS, HTN, HLD w/ Sx 3yr ago w/ dizziness. Evaluated in [**State **] where a head CT revealed L frontal extraxial mass (~2cm per pt). 6wk ago w/episode RLE \"gave way\" and occasionally \"feels like wood.\" MRI scan w/enlargement of mass, per records 2.5x3.4x2cm L frontal lobe extraaxial mass, in addition to much smaller 12mmx8mmx4mm mass in R temporal lobe (per [**Hospital3 **] report). He was started on decadron 1mg [**Hospital1 **]. Chief complaint: PMHx: PMH: parasagittal meningioma, seizure, CAD, s/p CABG ([**2153**]), AS, HLD, HTN, hypothyroid PSH: CABG x4([**2153**]), appy, anal fissure repair, CCY, L knee surgery, TURP Cancer (Malignant Neoplasm), Brain Assessment: Pt alert and oriented x3. Pupils equal and briskly reactive bilaterally to light. Moving all extremities with normal strength. Action: Response: Plan:",
+    "entities": [],
+    "metrics": {
+      "total_entities": 0,
+      "successful_links": 0,
+      "linking_accuracy": 0
+    }
+  },
+  {
+    "subject_id": 23,
+    "category": "Nursing",
+    "text": "HPI: 75yo RHM with CAD s/p CABG x4, AS, HTN, HLD w/ Sx 3yr ago w/ dizziness. Evaluated in [**State **] where a head CT revealed L frontal extraxial mass (~2cm per pt). 6wk ago w/episode RLE \"gave way\" and occasionally \"feels like wood.\" MRI scan w/enlargement of mass, per records 2.5x3.4x2cm L frontal lobe extraaxial mass, in addition to much smaller 12mmx8mmx4mm mass in R temporal lobe (per [**Hospital3 **] report). He was started on decadron 1mg [**Hospital1 **]. Chief complaint: PMHx: PMH: parasagittal meningioma, seizure, CAD, s/p CABG ([**2153**]), AS, HLD, HTN, hypothyroid PSH: CABG x4([**2153**]), appy, anal fissure repair, CCY, L knee surgery, TURP Cancer (Malignant Neoplasm), Brain Assessment: VSS. Afebrile. Sbp running below 140 systolic. Pt alert and oriented x3. Pupils equal and briskly reactive bilaterally to light. Moving all extremities with normal strength. Lungs cta bilaterally. Abd soft, posititive bowel sounds, bm x1. Tolerating regular diet. U/o adequate via foley. Action: Frequent neuro checks. Diabetic management per ssri and md s orders. Nicardipine weaned off. Response: Neuro checks remain within normal limits. Sbp remains within ordered parameters. Plan: report called to floor transfer when bed available.",
+    "entities": [],
+    "metrics": {
+      "total_entities": 0,
+      "successful_links": 0,
+      "linking_accuracy": 0
+    }
+  },
+  {
+    "subject_id": 23,
+    "category": "Nursing",
+    "text": "78 year old, pleasant male. Resection of known meningioma, which was diagnosed 3 years ago. [**2157-10-18**] patient was working in his garage and began to feel his right leg becoming numb and heavy. He began to have a seizure with shaking to his right leg, later his right arm. Taken by ambulance to [**Hospital3 **] hospital, then transferred to [**Hospital1 54**]. Previously had been scheduled for resection on the 26^th His aspirin use has been held due to anticipated surgery. [**2157-10-22**] left craniotomy for tumor resection PMHx significant for HTN, Aortic stenosis, CAD s/p CABG x4 ([**2153**]) Cancer (Malignant Neoplasm), Brain Assessment: AAOX3,MAE hypotensive to hypertension surgical incision in occipital region Action: fluid bolus (250)ml and rate increased to 100ml/hr nicardipine off for a few hours. Needed to restart as BP increased to 150 range Response: good bp control Plan: SBP < 140 wean nicardipine as BP tolerates MRI today",
+    "entities": [],
+    "metrics": {
+      "total_entities": 0,
+      "successful_links": 0,
+      "linking_accuracy": 0
+    }
+  },
+  {
+    "subject_id": 23,
+    "category": "Nursing",
+    "text": "78 year old, pleasant male. Resection of known meningioma, which was diagnosed 3 years ago. [**2157-10-18**] patient was working in his garage and began to feel his right leg becoming numb and heavy. He began to have a seizure with shaking to his right leg, later his right arm. Taken by ambulance to [**Hospital3 **] hospital, then transferred to [**Hospital1 54**]. Previously had been scheduled for resection on the 26^th His aspirin use has been held due to anticipated surgery. [**2157-10-22**] left craniotomy for tumor resection PMHx significant for HTN, Aortic stenosis, CAD s/p CABG x4 ([**2153**]) Cancer (Malignant Neoplasm), Brain Assessment: AAOX3,MAE hypotensive to hypertensive, surgical incision in occipital region large hourly outputs Action: fluid bolus (250)ml and rate increased to 100ml/hr po fluids increased and encouraged nicardipine off for a few hours. Needed to restart as BP increased to 150 range decadron q6hr x8doses then decrease to 3mg Response: good bp control Plan: SBP < 140 wean nicardipine as BP tolerates MRI today",
+    "entities": [],
+    "metrics": {
+      "total_entities": 0,
+      "successful_links": 0,
+      "linking_accuracy": 0
+    }
+  },
+  {
+    "subject_id": 68,
+    "category": "Discharge summary",
+    "text": "Name: [**Known lastname 5477**],[**Known firstname **] Unit No: [**Numeric Identifier 5478**] Admission Date: [**2174-1-4**] Discharge Date: [**2174-1-19**] Date of Birth: [**2132-2-29**] Sex: F Service: MEDICINE Allergies: Nevirapine / Abacavir / Ampicillin / Tylenol / Zidovudine Attending:[**First Name3 (LF) 3930**] Addendum: After discussion with Dr. [**Last Name (STitle) 1629**], it was decided that the patient will not be discharged on MAC prophylaxis (Azithromycin) and Digoxin. This was to prevent digoxin toxicity in light of declining renal function (pt will not have any lab testing done at hospice). Also, the pt did not have any evidence of MAC on discharge and will continue her 4 day course of antibiotics for pneumonia. Her goals of care are comfort measures only Discharge Disposition: Extended Care Facility: [**Hospital6 5479**] - [**Hospital1 328**] [**Name6 (MD) **] [**Name8 (MD) **] MD [**MD Number(2) 3931**] Completed by:[**2174-1-19**]",
+    "entities": [],
+    "metrics": {
+      "total_entities": 0,
+      "successful_links": 0,
+      "linking_accuracy": 0
+    }
+  },
+  {
+    "subject_id": 68,
+    "category": "Discharge summary",
+    "text": "Name: [**Known lastname 5477**],[**Known firstname **] Unit No: [**Numeric Identifier 5478**] Admission Date: [**2174-1-4**] Discharge Date: [**2174-1-19**] Date of Birth: [**2132-2-29**] Sex: F Service: MEDICINE Allergies: Nevirapine / Abacavir / Ampicillin / Tylenol / Zidovudine Attending:[**First Name3 (LF) 839**] Addendum: The patient was discharged with 600mg Azithromycin (admission medication) for MAC prophylaxis. Discharge Disposition: Extended Care Facility: [**Hospital6 5479**] - [**Hospital1 328**] [**Name6 (MD) **] [**Name8 (MD) **] MD [**MD Number(2) 841**] Completed by:[**2174-1-18**]",
+    "entities": [],
+    "metrics": {
+      "total_entities": 0,
+      "successful_links": 0,
+      "linking_accuracy": 0
+    }
+  }
+]
