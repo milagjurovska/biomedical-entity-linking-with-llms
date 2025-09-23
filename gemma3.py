@@ -188,7 +188,7 @@ class DynamicKnowledgeBase:
         print(f"   KB entries: {len(self.kb)}")
 
 class BiomedicalEntityLinker:
-    def __init__(self, engine, model_name="llama3.2:1b"):
+    def __init__(self, engine, model_name="gemma3:1b"):
         self.model_name = model_name
         self.setup_model()
 
@@ -529,9 +529,9 @@ def main():
         acc = linked_count / count if count > 0 else 0
         print(f"  {etype}: {linked_count}/{count} ({acc:.2f})")
 
-    with open("llama3.2_results.json", 'w', encoding='utf-8') as f:
+    with open("gemma_results.json", 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
-    print("\n✓ Results saved to: llama3.2_results.json")
+    print("\n✓ Results saved to: gemma3_results.json")
     return results
 
 

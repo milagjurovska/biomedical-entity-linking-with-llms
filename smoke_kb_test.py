@@ -282,9 +282,10 @@ def create_sample_kb() -> dict:
             "id": "UMLS:MRI",
             "name": "Magnetic Resonance Imaging",
             "type": "Test",
-            "aliases": ["mri scan"],
+            "aliases": ["mri", "mri scan"],
             "definition": "Magnetic field and radiofrequency based imaging."
         },
+
     }
     return kb
 
@@ -293,7 +294,11 @@ ABBREV_TYPES = {
     "CAD": "Disease", "HTN": "Disease", "HLD": "Disease", "AS": "Disease",
     "CABG": "Procedure", "CT": "Test", "MRI": "Test",
 }
-MED_SIGNAL = re.compile(r'\b([A-Z][a-zA-Z\-]+)(?:\s+\d+\s?(?:mg|mcg|g))?\s*(?:PO|IV|IM|SC|qHS|BID|TID|QID|PRN)?\b')
+MED_SIGNAL = re.compile(
+    r'\b([A-Z][a-z][a-zA-Z\-]+)'            
+    r'(?:\s+\d+\s?(?:mg|mcg|g))?'          
+    r'(?:\s*(?:PO|IV|IM|SC|qHS|BID|TID|QID|PRN))?\b'
+)
 
 def normalize_text(s: str) -> str:
     s = DEID.sub('', s)
@@ -303,7 +308,16 @@ def normalize_text(s: str) -> str:
 def fuzzy_ratio(a, b):
     return int(100 * SequenceMatcher(None, a.lower(), b.lower()).ratio())
 
-def extract_entities_fallback(text: str) -> List[Dict]:
+def build_med_index(kb: dict):
+    meds = set()
+    for v in kb.values():
+        if v.get("type") == "Medication":
+            meds.add(v["name"].lower())
+            for a in v.get("aliases", []):
+                meds.add(a.lower())
+    return meds
+
+def extract_entities_fallback(text: str, med_index: set) -> List[Dict]:
     text = normalize_text(text)
     entities = []
 
@@ -315,13 +329,26 @@ def extract_entities_fallback(text: str) -> List[Dict]:
         for m in re.finditer(rf'\b{kw}\b', text, flags=re.I):
             entities.append({"text": m.group(0), "type": "Disease", "start": m.start(), "end": m.end()})
 
-    skip = {"patient","head","right","left","pain","daily","dose","plan","goal","meds","surgery","reports","was","with","then"}
+    skip_words = {
+        "patient","head","right","left","pain","daily","dose","plan","goal","meds","surgery",
+        "reports","with","then","the","will","hpi","bp","mac","control","started","include",
+        "mass"
+    }
     for m in MED_SIGNAL.finditer(text):
         token = m.group(1)
-        if token.lower() in skip:
+        low = token.lower()
+        if low in skip_words:
             continue
-        entities.append({"text": token, "type": "Medication", "start": m.start(1), "end": m.end(1)})
 
+        # Look ahead for a nearby dose unit to qualify non-KB tokens
+        span_end = m.end()
+        window = text[span_end: span_end + 12]  # small window to catch " 10 mg"
+        has_dose = bool(re.search(r'\b\d+\s?(?:mg|mcg|g)\b', window, flags=re.I))
+
+        if (low in med_index) or has_dose:
+            entities.append({"text": token, "type": "Medication", "start": m.start(1), "end": m.end(1)})
+
+    # De-dup by span+type
     seen = set()
     uniq = []
     for e in entities:
@@ -350,11 +377,12 @@ SAMPLE_TEXTS = [
 
 def run_smoke() -> Tuple[int, dict]:
     kb = create_sample_kb()
+    med_index = build_med_index(kb)
     total, linked = 0, 0
     detailed = []
 
     for i, text in enumerate(SAMPLE_TEXTS, 1):
-        ents = extract_entities_fallback(text)
+        ents = extract_entities_fallback(text, med_index)
         results = []
         for e in ents:
             total += 1
@@ -379,6 +407,7 @@ def run_smoke() -> Tuple[int, dict]:
         "cases": detailed
     }
     return (0 if linked > 0 else 1), summary
+
 
 def main():
     exit_code, summary = run_smoke()
