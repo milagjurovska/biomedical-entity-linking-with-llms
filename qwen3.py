@@ -296,7 +296,7 @@ class BiomedicalEntityLinker:
         None: 0
     }
 
-    def __init__(self, engine, model_name="llama3.2:1b"):
+    def __init__(self, engine, model_name="qwen3:1.7b"):
         self.model_name = model_name
         self.setup_model()
         self.entity_types = ["Medication", "Disease", "Symptom", "Procedure", "Anatomy", "Test", "Other"]
@@ -334,18 +334,30 @@ class BiomedicalEntityLinker:
     def _extract_llm_json(self, text: str, entity_types_str: str) -> List[Dict]:
         prompt = f"""Extract biomedical entities from the clinical text.
 
-Return STRICT JSON exactly as:
-{{"entities":[{{"text": str, "type": str}}]]}}
+        Return STRICT JSON exactly as:
+        {{"entities":[{{"text":"...", "type":"..."}}]}}
 
-Rules:
-- Types must be one of: {entity_types_str}
-- Return at most 40 entities for this chunk.
-- Deduplicate case-insensitively.
-- Ignore PHI markers, dates, generic words, and section headers.
+        Rules:
+        - Types must be one of: {entity_types_str}
+        - Return at most 40 entities for this chunk.
+        - Deduplicate case-insensitively.
+        - Ignore PHI markers, dates, generic words, and section headers.
 
-Text:
-\"\"\"{text}\"\"\""""
-        raw = self.generate_response(prompt, max_tokens=240)
+        Text:
+        \"\"\"{text}\"\"\""""
+
+        raw = ""
+        try:
+            resp = ollama.generate(
+                model=self.model_name,
+                prompt=prompt,
+                format='json',
+                options={'num_predict': 512, 'temperature': 0.1, 'top_p': 0.9}
+            )
+            raw = resp.get('response', '').strip()
+        except Exception:
+            return []
+
         try:
             m = re.search(r'\{.*\}\s*$', raw, flags=re.S)
             if m:
@@ -576,7 +588,7 @@ def main():
         })
     summary = summarize(results)
     report = {"summary": summary, "model": getattr(linker, "model_name", None), "results": results}
-    out_path = "llama3.2_results.json"
+    out_path = "qwen3_results.json"
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
     print(f"✓ Report saved to: {out_path}")
