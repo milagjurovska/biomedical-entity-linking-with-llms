@@ -1,45 +1,45 @@
 {
   "summary": {
     "notes_processed": 15,
-    "total_entities": 54,
-    "successful_links": 32,
-    "overall_accuracy": 0.5925925925925926,
+    "total_entities": 56,
+    "successful_links": 28,
+    "overall_accuracy": 0.5,
     "by_type": [
       {
         "type": "Anatomy",
-        "total": 7,
-        "linked": 2,
-        "accuracy": 0.2857142857142857
+        "total": 6,
+        "linked": 1,
+        "accuracy": 0.16666666666666666
       },
       {
         "type": "Disease",
-        "total": 8,
-        "linked": 2,
-        "accuracy": 0.25
+        "total": 12,
+        "linked": 5,
+        "accuracy": 0.4166666666666667
       },
       {
         "type": "Medication",
-        "total": 22,
-        "linked": 21,
-        "accuracy": 0.9545454545454546
-      },
-      {
-        "type": "Other",
-        "total": 1,
-        "linked": 1,
+        "total": 13,
+        "linked": 13,
         "accuracy": 1.0
       },
       {
-        "type": "Procedure",
-        "total": 9,
-        "linked": 3,
+        "type": "Other",
+        "total": 6,
+        "linked": 2,
         "accuracy": 0.3333333333333333
       },
       {
+        "type": "Procedure",
+        "total": 10,
+        "linked": 4,
+        "accuracy": 0.4
+      },
+      {
         "type": "Symptom",
-        "total": 6,
+        "total": 8,
         "linked": 3,
-        "accuracy": 0.5
+        "accuracy": 0.375
       },
       {
         "type": "Test",
@@ -52,9 +52,9 @@
       {
         "subject_id": 6,
         "category": "Discharge summary",
-        "entities": 0,
-        "linked": 0,
-        "accuracy": 0.0
+        "entities": 13,
+        "linked": 3,
+        "accuracy": 0.23076923076923078
       },
       {
         "subject_id": 9,
@@ -73,16 +73,16 @@
       {
         "subject_id": 12,
         "category": "Discharge summary",
-        "entities": 8,
-        "linked": 5,
-        "accuracy": 0.625
+        "entities": 5,
+        "linked": 4,
+        "accuracy": 0.8
       },
       {
         "subject_id": 13,
         "category": "Discharge summary",
-        "entities": 24,
-        "linked": 14,
-        "accuracy": 0.5833333333333334
+        "entities": 14,
+        "linked": 9,
+        "accuracy": 0.6428571428571429
       },
       {
         "subject_id": 13,
@@ -94,9 +94,9 @@
       {
         "subject_id": 17,
         "category": "Discharge summary",
-        "entities": 12,
-        "linked": 8,
-        "accuracy": 0.6666666666666666
+        "entities": 0,
+        "linked": 0,
+        "accuracy": 0.0
       },
       {
         "subject_id": 17,
@@ -122,30 +122,30 @@
       {
         "subject_id": 20,
         "category": "Discharge summary",
-        "entities": 0,
+        "entities": 1,
         "linked": 0,
         "accuracy": 0.0
       },
       {
         "subject_id": 20,
         "category": "Discharge summary",
-        "entities": 1,
+        "entities": 0,
         "linked": 0,
         "accuracy": 0.0
       },
       {
         "subject_id": 22,
         "category": "Discharge summary",
-        "entities": 8,
-        "linked": 5,
-        "accuracy": 0.625
+        "entities": 19,
+        "linked": 11,
+        "accuracy": 0.5789473684210527
       },
       {
         "subject_id": 23,
         "category": "Nursing",
-        "entities": 0,
-        "linked": 0,
-        "accuracy": 0.0
+        "entities": 3,
+        "linked": 1,
+        "accuracy": 0.3333333333333333
       },
       {
         "subject_id": 23,
@@ -154,7 +154,51 @@
         "linked": 0,
         "accuracy": 0.0
       }
-    ]
+    ],
+    "metrics_at_k": {
+      "1": {
+        "precision": 0.26666666666666666,
+        "recall": 0.26666666666666666,
+        "f1": 0.26666666666666666
+      },
+      "3": {
+        "precision": 0.08888888888888888,
+        "recall": 0.26666666666666666,
+        "f1": 0.13333333333333333
+      },
+      "5": {
+        "precision": 0.05333333333333334,
+        "recall": 0.26666666666666666,
+        "f1": 0.08888888888888889
+      },
+      "10": {
+        "precision": 0.02666666666666667,
+        "recall": 0.26666666666666666,
+        "f1": 0.048484848484848485
+      }
+    },
+    "overall_metrics_at_k": {
+      "1": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "3": {
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "f1": 0.5
+      },
+      "5": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "f1": 0.33333333333333337
+      },
+      "10": {
+        "precision": 0.1,
+        "recall": 1.0,
+        "f1": 0.18181818181818182
+      }
+    }
   },
   "model": "llama3.2:1b",
   "results": [
@@ -162,11 +206,352 @@
       "subject_id": 6,
       "category": "Discharge summary",
       "text": "Admission Date: Discharge Date: Date of Birth: Sex: F Service: ADMISSION DIAGNOSIS: End stage renal disease, admitted for transplant surgery. HISTORY OF PRESENT ILLNESS: The patient is a 65 year-old woman with end stage renal disease, secondary to malignant hypertension. She was started on dialysis in . She currently was on peritoneal dialysis and appears to be doing well. She has a history of gastric angiectasia which she requires endoscopy. She was admitted on for a scheduled living donor kidney transplant by her son, who is the donor. She does have a donor specific antibody (B-51) and will have a final T & B cell class match prior to transplantation. PAST MEDICAL HISTORY: End stage renal disease, secondary to malignant hypertension on dialysis. History of anemia following gastric angiectasia. She has no known history for coronary artery disease for diabetes. ALLERGIES: No known drug allergies. MEDICATIONS: Unknown. SOCIAL HISTORY: Married, lives with her husband. She has a history of a half pack of cigarettes per day for 20 years. Occasional alcohol. PHYSICAL EXAMINATION: The patient was afebrile. Vital signs were stable. Blood pressure was 124/58; heart rate 76; weight 160 pounds. Abdomen soft and nontender. She has a peritoneal dialysis catheter in the right lower quadrant. She has good femoral pulses bilaterally. Mild pedal edema. HOSPITAL COURSE: On , the patient went to the operating room for living donor kidney transplant, performed by Dr. and assisting by Dr. . Please see details of this surgery in operating room note. Also during her operating room time, the patient also had a right iliac artery thrombosis. It was noted that at the end of the completion of the procedure, that she had an ischemic appearing right foot and absence of a right femoral pulse. In the operation, there was some difficulty with arterial anastomosis, renal artery to the left iliac artery and Dr. came to assist Dr. . Again, please see details of that operation in the operative report. Postoperatively, the patient went to the Intensive Care Unit. The patient had an A line, a central line, Foley. She was placed on a heparin drip to keep PTT between 45 and 50. The patient's dressing was clean, dry and intact. The patient had 2 drains in place. Good femoral pulse and good dorsalis pedis pulse. These pulses were palpable. The patient was making good urine output postoperatively. Renal was consulted and made recommendations. Postoperatively, the patient had a renal ultrasound demonstrating an unremarkable renal transplant ultrasound with normal size and appearance of the transplanted kidney and normal arterial wave forms and resistive disease, ranging from 0.63 to 0.75 throughout. On postoperative day number one, the patient had another ultrasound secondary to her hematocrit decreasing and they wanted to rule out hematoma. The ultrasound demonstrated that there was no hematoma seen adjacent to the transplanted kidney. The transplanted kidney is minimally changed from yesterday which was on with a small amount of pelvic ectasis. Relatively unchanged resistive indices. The patient did get multiple transfusions for her low hematocrit. Her heparin was discontinued on . The patient received 1/2 cc per cc of replacement and on , Tacrolimus was started. On , the patient had some complaint of right foot numbness. Lower extremity ultrasound was obtained to rule out deep venous thrombosis and this showed no evidence of right lower extremity deep venous thrombosis. On , WBC was 2.9, hematocrit of 35.2. Also on , PT was 13.5, PTT was 36.7, INR of 1.2. Sodium that day was 129 and 4.4, 100 BUN, creatinine of 69 and 6.2 with a glucose of 96. Vascular surgery continued to see the patient. It was decided that hematocrit was stable, that heparin could be continued. The patient was restarted on heparin. The patient still complained of right foot numbness but it was about the same and not worse. She was continued on all of her immunosuppressive medications, including Tacrolimus, Valcyte, Cellcept, Bactrim, Solu-Medrol. The patient was transitioned from heparin to Coumadin. The patient was transferred to the floor, continued to make excellent urine output. The patient had another ultrasound on because there was blood in her drain and with the decreasing hematocrit. Ultrasound demonstrated normal arterial and venous color, blood flow and wave form with normal residual indices. 7.6 by 3.5 cm fluid collection, likely simply fluid, anterior to the contrast. Focal area of heterogeneity within the lateral aspect of the mid pole, probably which demonstrates normal blood flow and may represent artifact; however, attention to this area on a follow up scan is recommended to document interval change or resolution. On , the patient's right lower extremity was swollen. The patient complained of right hip and thigh pain, pitting edema of right lower extremity greater than left lower extremity so an ultrasound was performed which included the right iliac artery. This demonstrated acute deep venous thrombosis within the right common femoral and superficial femoral veins which had developed since . There is a right groin hematoma which was unchanged. The patient continued to be anticoagulated for DVT. One drain was eventually removed, continued on with drain output of 170, afebrile, vital signs stable. She went home with services on the following medications: Valcyte 450 mg q. day, Bactrim SS 1 tab q. day, Protonix 40 mg q. day, Nystatin 5 ml suspension, 5 ml four times a day, Colace 100 mg twice a day, Movlapine 10 mg q. day, Percocet 22 tabs q. day, Lopressor 100 mg twice a day, MMF 500 mg q.o.d. Coumadin 2 mg q. day. This should be monitored to keep the INR between 2 and 3. Reglan 10 mg four times a day before meals and at bedtime. Tacrolimus 10 mg p.o. twice a day. Potassium sodium phosphate, one packet q. day and Compazine 10 mg q. 6 hours prn. The patient has a follow up appointment with Dr. , please call for an appointment. The patient needs to change dressings on her wound twice a day located on her groin, place a dry gauze between the wound and her skin. No heavy lifting of greater than 10 pounds for the first 6 weeks after surgery. DIAGNOSES: End stage renal disease, status post renal transplant. Arterial thrombosis. Deep venous thrombosis. Resolving hypertension. , Dictated By: MEDQUIST36 D: 16:39:51 T: 17:14:46 Job#:",
-      "entities": [],
+      "entities": [
+        {
+          "mention": "alcohol",
+          "type": "Medication",
+          "start": 1061,
+          "end": 1068,
+          "linked_entity": {
+            "id": "ADMINMED:alcohol",
+            "name": "alcohol",
+            "type": "Medication",
+            "aliases": [
+              "ALCOHOL",
+              "Alcohol",
+              "alcohol"
+            ],
+            "definition": null,
+            "source": "inputevents",
+            "score": 118
+          },
+          "candidates": [
+            {
+              "id": "ADMINMED:alcohol",
+              "name": "alcohol",
+              "type": "Medication",
+              "aliases": [
+                "ALCOHOL",
+                "Alcohol",
+                "alcohol"
+              ],
+              "definition": null,
+              "source": "inputevents",
+              "score": 118
+            }
+          ],
+          "gold_entity_id": "ADMINMED:alcohol"
+        },
+        {
+          "mention": "peritoneal dialysis catheter",
+          "type": "Anatomy",
+          "start": 1242,
+          "end": 1270,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "femoral pulses",
+          "type": "Symptom",
+          "start": 1313,
+          "end": 1327,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "pedal edema",
+          "type": "Disease",
+          "start": 1346,
+          "end": 1357,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "right iliac artery thrombosis",
+          "type": "Procedure",
+          "start": 1615,
+          "end": 1644,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "ischemic appearing right foot",
+          "type": "Symptom",
+          "start": 1727,
+          "end": 1756,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "absence of a right femoral pulse",
+          "type": "Symptom",
+          "start": 1761,
+          "end": 1793,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "operative report",
+          "type": "Test",
+          "start": 1984,
+          "end": 2000,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "heparin drip",
+          "type": "Procedure",
+          "start": 2134,
+          "end": 2146,
+          "linked_entity": {
+            "id": "MED:heparin (iabp)",
+            "name": "heparin (iabp)",
+            "type": "Medication",
+            "aliases": [
+              "HEPARIN (IABP)",
+              "Heparin (Iabp)",
+              "heparin  iabp",
+              "heparin (iabp)",
+              "heparin iabp"
+            ],
+            "definition": null,
+            "source": "prescriptions",
+            "score": 88
+          },
+          "candidates": [
+            {
+              "id": "MED:heparin (iabp)",
+              "name": "heparin (iabp)",
+              "type": "Medication",
+              "aliases": [
+                "HEPARIN (IABP)",
+                "Heparin (Iabp)",
+                "heparin  iabp",
+                "heparin (iabp)",
+                "heparin iabp"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 88
+            },
+            {
+              "id": "MED:heparin (iabp)",
+              "name": "heparin (iabp)",
+              "type": "Medication",
+              "aliases": [
+                "HEPARIN (IABP)",
+                "Heparin (Iabp)",
+                "heparin  iabp",
+                "heparin (iabp)",
+                "heparin iabp"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 88
+            },
+            {
+              "id": "MED:heparin (iabp)",
+              "name": "heparin (iabp)",
+              "type": "Medication",
+              "aliases": [
+                "HEPARIN (IABP)",
+                "Heparin (Iabp)",
+                "heparin  iabp",
+                "heparin (iabp)",
+                "heparin iabp"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 88
+            },
+            {
+              "id": "MED:heparin (iabp)",
+              "name": "heparin (iabp)",
+              "type": "Medication",
+              "aliases": [
+                "HEPARIN (IABP)",
+                "Heparin (Iabp)",
+                "heparin  iabp",
+                "heparin (iabp)",
+                "heparin iabp"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 88
+            },
+            {
+              "id": "MED:heparin (iabp)",
+              "name": "heparin (iabp)",
+              "type": "Medication",
+              "aliases": [
+                "HEPARIN (IABP)",
+                "Heparin (Iabp)",
+                "heparin  iabp",
+                "heparin (iabp)",
+                "heparin iabp"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 88
+            },
+            {
+              "id": "MED:heparin (iabp)",
+              "name": "heparin (iabp)",
+              "type": "Medication",
+              "aliases": [
+                "HEPARIN (IABP)",
+                "Heparin (Iabp)",
+                "heparin  iabp",
+                "heparin (iabp)",
+                "heparin iabp"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 88
+            },
+            {
+              "id": "MED:heparin sodium",
+              "name": "heparin sodium",
+              "type": "Medication",
+              "aliases": [
+                "HEPA",
+                "HEPARIN SODIUM",
+                "Hepa",
+                "Heparin Sodium",
+                "hepa",
+                "heparin sodium"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 81
+            },
+            {
+              "id": "MED:heparin sodium",
+              "name": "heparin sodium",
+              "type": "Medication",
+              "aliases": [
+                "HEPA",
+                "HEPARIN SODIUM",
+                "Hepa",
+                "Heparin Sodium",
+                "hepa",
+                "heparin sodium"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 81
+            }
+          ]
+        },
+        {
+          "mention": "A line",
+          "type": "Other",
+          "start": 2083,
+          "end": 2089,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "central line",
+          "type": "Other",
+          "start": 2093,
+          "end": 2105,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "Foley",
+          "type": "Other",
+          "start": 2107,
+          "end": 2112,
+          "linked_entity": {
+            "id": "ADMINMED:foley",
+            "name": "foley",
+            "type": "Medication",
+            "aliases": [
+              "FOLEY",
+              "Foley",
+              "foley"
+            ],
+            "definition": null,
+            "source": "inputevents",
+            "score": 108
+          },
+          "candidates": [
+            {
+              "id": "ADMINMED:foley",
+              "name": "foley",
+              "type": "Medication",
+              "aliases": [
+                "FOLEY",
+                "Foley",
+                "foley"
+              ],
+              "definition": null,
+              "source": "inputevents",
+              "score": 108
+            }
+          ],
+          "gold_entity_id": "ADMINMED:foley"
+        },
+        {
+          "mention": "Intensive Care Unit",
+          "type": "Anatomy",
+          "start": 2043,
+          "end": 2062,
+          "linked_entity": null,
+          "candidates": []
+        }
+      ],
       "metrics": {
-        "total_entities": 0,
-        "successful_links": 0,
-        "linking_accuracy": 0.0
+        "total_entities": 13,
+        "successful_links": 3,
+        "linking_accuracy": 0.23076923076923078,
+        "num_entities_with_gold": 2,
+        "metrics_at_k": {
+          "1": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "3": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5
+          },
+          "5": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.33333333333333337
+          },
+          "10": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 2,
+            "pred": 2,
+            "relevant": 2
+          },
+          "3": {
+            "hits": 2,
+            "pred": 6,
+            "relevant": 2
+          },
+          "5": {
+            "hits": 2,
+            "pred": 10,
+            "relevant": 2
+          },
+          "10": {
+            "hits": 2,
+            "pred": 20,
+            "relevant": 2
+          }
+        }
       }
     },
     {
@@ -177,7 +562,52 @@
       "metrics": {
         "total_entities": 0,
         "successful_links": 0,
-        "linking_accuracy": 0.0
+        "linking_accuracy": 0.0,
+        "num_entities_with_gold": 0,
+        "metrics_at_k": {
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "10": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "3": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "5": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "10": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          }
+        }
       }
     },
     {
@@ -188,7 +618,52 @@
       "metrics": {
         "total_entities": 0,
         "successful_links": 0,
-        "linking_accuracy": 0.0
+        "linking_accuracy": 0.0,
+        "num_entities_with_gold": 0,
+        "metrics_at_k": {
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "10": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "3": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "5": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "10": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          }
+        }
       }
     },
     {
@@ -234,7 +709,8 @@
               "source": "prescriptions",
               "score": 115
             }
-          ]
+          ],
+          "gold_entity_id": "MED:aspirin"
         },
         {
           "mention": "Atenolol",
@@ -268,7 +744,8 @@
               "source": "prescriptions",
               "score": 115
             }
-          ]
+          ],
+          "gold_entity_id": "MED:atenolol"
         },
         {
           "mention": "Allopurinol",
@@ -308,7 +785,8 @@
               "source": "prescriptions",
               "score": 115
             }
-          ]
+          ],
+          "gold_entity_id": "MED:allopurinol suspension"
         },
         {
           "mention": "Multivitamin",
@@ -348,96 +826,8 @@
               "source": "prescriptions",
               "score": 105
             }
-          ]
-        },
-        {
-          "mention": "Cachectic",
-          "type": "Anatomy",
-          "start": 1308,
-          "end": 1317,
-          "linked_entity": null,
-          "candidates": []
-        },
-        {
-          "mention": "Jaundiced",
-          "type": "Disease",
-          "start": 1442,
-          "end": 1451,
-          "linked_entity": null,
-          "candidates": []
-        },
-        {
-          "mention": "Ileostomy",
-          "type": "Procedure",
-          "start": 1740,
-          "end": 1749,
-          "linked_entity": {
-            "id": "ICD9:V442",
-            "name": "ileostomy status",
-            "type": "Disease",
-            "aliases": [
-              "ILEOSTOMY STATUS",
-              "Ileostomy Status",
-              "ileostomy status"
-            ],
-            "definition": null,
-            "source": "diagnosis",
-            "score": 78
-          },
-          "candidates": [
-            {
-              "id": "ICD9:V442",
-              "name": "ileostomy status",
-              "type": "Disease",
-              "aliases": [
-                "ILEOSTOMY STATUS",
-                "Ileostomy Status",
-                "ileostomy status"
-              ],
-              "definition": null,
-              "source": "diagnosis",
-              "score": 78
-            },
-            {
-              "id": "ICD9:V442",
-              "name": "ileostomy status",
-              "type": "Disease",
-              "aliases": [
-                "ILEOSTOMY STATUS",
-                "Ileostomy Status",
-                "ileostomy status"
-              ],
-              "definition": null,
-              "source": "diagnosis",
-              "score": 78
-            },
-            {
-              "id": "ICD9:V442",
-              "name": "ileostomy status",
-              "type": "Disease",
-              "aliases": [
-                "ILEOSTOMY STATUS",
-                "Ileostomy Status",
-                "ileostomy status"
-              ],
-              "definition": null,
-              "source": "diagnosis",
-              "score": 78
-            },
-            {
-              "id": "ICD9:V442",
-              "name": "ileostomy status",
-              "type": "Disease",
-              "aliases": [
-                "ILEOSTOMY STATUS",
-                "Ileostomy Status",
-                "ileostomy status"
-              ],
-              "definition": null,
-              "source": "diagnosis",
-              "score": 78
-            }
-          ]
+          ],
+          "gold_entity_id": "MED:multivitamin iv"
         },
         {
           "mention": "Pancreatic cancer",
@@ -449,9 +839,54 @@
         }
       ],
       "metrics": {
-        "total_entities": 8,
-        "successful_links": 5,
-        "linking_accuracy": 0.625
+        "total_entities": 5,
+        "successful_links": 4,
+        "linking_accuracy": 0.8,
+        "num_entities_with_gold": 4,
+        "metrics_at_k": {
+          "1": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "3": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5
+          },
+          "5": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.33333333333333337
+          },
+          "10": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 4,
+            "pred": 4,
+            "relevant": 4
+          },
+          "3": {
+            "hits": 4,
+            "pred": 12,
+            "relevant": 4
+          },
+          "5": {
+            "hits": 4,
+            "pred": 20,
+            "relevant": 4
+          },
+          "10": {
+            "hits": 4,
+            "pred": 40,
+            "relevant": 4
+          }
+        }
       }
     },
     {
@@ -459,6 +894,14 @@
       "category": "Discharge summary",
       "text": "Admission Date: Discharge Date: Date of Birth: Sex: F Service: Cardiac surgery CHIEF COMPLAINT: Chest pain. HISTORY OF PRESENT ILLNESS: This is a 39-year-old woman with diabetes, hypertension, hyperlipidemia and obesity, with a one to two months of chest burning with exertion. For the past six months, she has been participating in a new vigorous exercise program to lose weight. Her symptoms do gradually resolve with rest, but they have started to occur now with walking. She does acknowledge that there is associated nausea, diaphoresis and shortness of breath. Now recently she started to get symptoms for the past two days while at rest. She was referred for an outpatient exercise tolerance test, where she had chest pain and significant EKG changes. She was referred to for cardiac catheterization today, which revealed significant left main artery disease. Just prior to her transfer to , she did complain of chest pain and back pain at about 7/10 intensity and a nitroglycerin drip was started and she received 5 mg of IV Lopressor and 2 mg of IV Ativan, which did resolve her pain. While she was in the cath lab, she had an intraaortic balloon pump placed, and now she is not actively complaining of any pain. REVIEW OF SYSTEMS: She denies any orthopnea, lower extremity edema, but she does acknowledge that she does have dysmenorrhea. PRIOR MEDICAL HISTORY: She has diabetes mellitus, type 2, diagnosed in . She has been able to control it with diet since ; hypertension and obesity; however, she has lost 40 pounds in the last six months. SHE HAS AN ALLERGY TO SHELLFISH. MEDICATIONS ON TRANSFERS TO : Atenolol 50 mg a day, lisinopril 10 mg a day, Lipitor 20 mg a day, aspirin 325 mg once a day, progesterone, nitroglycerin drip, Lopressor, Ativan. SOCIAL HISTORY: She does not smoke. She does not use ethanol and she does not use cocaine. Her father had a brain tumor. Her brother did have coronary artery disease and a myocardial infarction in his late 30s. Her mother has hypertension. She does have a strong family history for hyperlipidemia. PHYSICAL EXAMINATION: The patient is comfortable appearing, in no apparent distress. Vital signs: Temperature 99.1, pulse 72, blood pressure 144/87. Pulse oximetry is 98% on room air. Head and neck: PERRLA. EOMI. Anicteric. Mucous membranes moist. Neck supple, no lymphadenopathy, no JVD. Cardiac: Regular rate and rhythm. Lungs clear to auscultation bilaterally. Abdomen is soft, nontender, nondistended, but she is morbidly obese, positive bowel sounds. Her extremities are warm, no edema. She has got 5/5 strength in all extremities. Her laboratories prior to admission from were white count 7.4, hematocrit of 39.8, platelets 190,000. Hemoglobin A1c was 7.1. Sodium was 140, potassium 4.1, chloride 103, bicarbonate 28, BUN 14, creatinine 0.6. Total cholesterol was 307, triglycerides were 79, and HDL was 50. , which was at (it was not at ), showed diffuse left main and proximal left anterior descending artery stenosis, 60% to 70%, which was ulcerative; 50% mid LAD stenosis; 50% left circumflex stenosis after OM1; moderate right coronary artery stenosis; a normal ejection fraction of 78%; no mitral regurgitation. Note that the right coronary artery stenosis that I am reported is different than what was actually reported on the initial catheterization results from . This was discussed between Dr. and Dr. , and was not actually considered to be 80% as previously reported. So this was a woman who was considered to have unstable angina but not actively ischemic. She was put on an intraaortic balloon pump, followed in the cardiac care unit, and was \"preoped\" and consented for a CABG on the next day because of her three-vessel disease. She was made n.p.o. after midnight and then in the morning she was taken to the operating room. On of , Ms. went to the operating room with Dr. for bypass surgery. Please refer to the previously dictated operative note by Dr. for the specifics of this surgery. In brief, three grafts were made. One was a left internal mammary to the left anterior descending artery and then two saphenous vein grafts were connected to the OM1 and OM2. She was on cardiopulmonary bypass for 76 minutes and the aorta was cross clamped for 53 of those minutes. She tolerated the surgery well and was transferred to the intensive care unit on propofol and Neo-Synephrine drips. Postoperatively, Ms. did extremely well. Her intraaortic balloon pump and all of her intravenous drips were discontinued on postoperative day one. On postoperative day two she was extubated and on postoperative day three she was transferred to the floor. Ms. major floor issues were as follows. Ms. was followed by physical therapy, which cleared her to go home with home physical therapy to assist with mobility, strength and endurance. She was also actively diuresed with Lasix and had her potassium repleted accordingly. Finally, she was noted to have hyperglycemia while she resumed her regular diet. consultation was obtained and they recommended metformin 500 mg twice a day to maintain euglycemia. She would follow her sugar as an outpatient and report this back in an outpatient followup appointment. On the patient's central line was discontinued. She was scheduled to leave, but she developed chest pain; however, this chest pain was considered not to be cardiac, to be more gastrointestinal in nature, and she had ......... and an EKG, both of which confirmed a noncardiac source for this chest pain. She is, therefore, on , postoperative day six, being discharged home in good condition with home physical therapy scheduled. FINAL DIAGNOSES: 1. Type 2 diabetes mellitus. 2. Hypertension. 3. Obesity. 4. Hyperlipidemia. 5. Unstable angina. 6. Three-vessel coronary artery disease, status post coronary artery bypass grafting, status post intraaortic balloon pump. 7. Hypokalemia. DISCHARGE MEDICATIONS: 1. Metoprolol 100 mg t.i.d. 2. Aspirin 325 mg p.o. q.d. 3. Captopril 50 mg p.o. t.i.d. 4. Lipitor 20 mg p.o. q.d. 5. Lasix 20 mg p.o. b.i.d. for one week. 6. Potassium chloride 10 mEq p.o. b.i.d. for one week. 7. Metformin 500 mg p.o. b.i.d.; follow your blood sugar levels and follow up with . 8. Percocet one to two tablets every four hours as needed for pain. 9. Colace 100 mg p.o. b.i.d. as needed for constipation. owup appointments are with Dr. , her primary care physician, one to two weeks, Dr. , her cardiologist, in two to three weeks, Dr. from as directed, and Dr. in one month. She is also recommended to follow up in Wound Care Clinic in one to two weeks to remove her staples. , M.D. Dictated By: MEDQUIST36 D: 16:37 T: 18:16 JOB#:",
       "entities": [
+        {
+          "mention": "Cardiac surgery",
+          "type": "Procedure",
+          "start": 63,
+          "end": 78,
+          "linked_entity": null,
+          "candidates": []
+        },
         {
           "mention": "IV Ativan",
           "type": "Medication",
@@ -624,7 +1067,8 @@
               "source": "diagnosis",
               "score": 106
             }
-          ]
+          ],
+          "gold_entity_id": "ICD9:6253"
         },
         {
           "mention": "Diabetes mellitus",
@@ -636,11 +1080,76 @@
         },
         {
           "mention": "Hypertension",
-          "type": "Anatomy",
+          "type": "Disease",
           "start": 1470,
           "end": 1482,
-          "linked_entity": null,
-          "candidates": []
+          "linked_entity": {
+            "id": "ICD9:36211",
+            "name": "hypertensive retinopathy",
+            "type": "Disease",
+            "aliases": [
+              "HYPERTENSIVE RETINOPATHY",
+              "Hypertensive Retinopathy",
+              "hypertensive retinopathy"
+            ],
+            "definition": null,
+            "source": "diagnosis",
+            "score": 77
+          },
+          "candidates": [
+            {
+              "id": "ICD9:36211",
+              "name": "hypertensive retinopathy",
+              "type": "Disease",
+              "aliases": [
+                "HYPERTENSIVE RETINOPATHY",
+                "Hypertensive Retinopathy",
+                "hypertensive retinopathy"
+              ],
+              "definition": null,
+              "source": "diagnosis",
+              "score": 77
+            },
+            {
+              "id": "ICD9:36211",
+              "name": "hypertensive retinopathy",
+              "type": "Disease",
+              "aliases": [
+                "HYPERTENSIVE RETINOPATHY",
+                "Hypertensive Retinopathy",
+                "hypertensive retinopathy"
+              ],
+              "definition": null,
+              "source": "diagnosis",
+              "score": 77
+            },
+            {
+              "id": "ICD9:36211",
+              "name": "hypertensive retinopathy",
+              "type": "Disease",
+              "aliases": [
+                "HYPERTENSIVE RETINOPATHY",
+                "Hypertensive Retinopathy",
+                "hypertensive retinopathy"
+              ],
+              "definition": null,
+              "source": "diagnosis",
+              "score": 77
+            },
+            {
+              "id": "ICD9:36211",
+              "name": "hypertensive retinopathy",
+              "type": "Disease",
+              "aliases": [
+                "HYPERTENSIVE RETINOPATHY",
+                "Hypertensive Retinopathy",
+                "hypertensive retinopathy"
+              ],
+              "definition": null,
+              "source": "diagnosis",
+              "score": 77
+            }
+          ]
         },
         {
           "mention": "Obesity",
@@ -682,7 +1191,8 @@
               "source": "prescriptions",
               "score": 115
             }
-          ]
+          ],
+          "gold_entity_id": "MED:lisinopril"
         },
         {
           "mention": "Aspirin",
@@ -722,7 +1232,8 @@
               "source": "prescriptions",
               "score": 115
             }
-          ]
+          ],
+          "gold_entity_id": "MED:aspirin"
         },
         {
           "mention": "Progesterone",
@@ -766,7 +1277,8 @@
               "source": "prescriptions",
               "score": 115
             }
-          ]
+          ],
+          "gold_entity_id": "MED:*nf* progesterone micronized"
         },
         {
           "mention": "Nitroglycerin drip",
@@ -1076,7 +1588,8 @@
               "source": "prescriptions",
               "score": 115
             }
-          ]
+          ],
+          "gold_entity_id": "MED:lorazepam"
         },
         {
           "mention": "Mitral regurgitation",
@@ -1085,400 +1598,57 @@
           "end": 3182,
           "linked_entity": null,
           "candidates": []
-        },
-        {
-          "mention": "aorta",
-          "type": "Anatomy",
-          "start": 4204,
-          "end": 4209,
-          "linked_entity": null,
-          "candidates": []
-        },
-        {
-          "mention": "surgery",
-          "type": "Procedure",
-          "start": 4271,
-          "end": 4278,
-          "linked_entity": {
-            "id": "MED:surgicel",
-            "name": "surgicel",
-            "type": "Medication",
-            "aliases": [
-              "SURGICEL",
-              "Surgicel",
-              "surgicel"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 71
-          },
-          "candidates": [
-            {
-              "id": "MED:surgicel",
-              "name": "surgicel",
-              "type": "Medication",
-              "aliases": [
-                "SURGICEL",
-                "Surgicel",
-                "surgicel"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 71
-            },
-            {
-              "id": "MED:surgicel",
-              "name": "surgicel",
-              "type": "Medication",
-              "aliases": [
-                "SURGICEL",
-                "Surgicel",
-                "surgicel"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 71
-            },
-            {
-              "id": "MED:surgicel",
-              "name": "surgicel",
-              "type": "Medication",
-              "aliases": [
-                "SURGICEL",
-                "Surgicel",
-                "surgicel"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 71
-            },
-            {
-              "id": "MED:surgicel",
-              "name": "surgicel",
-              "type": "Medication",
-              "aliases": [
-                "SURGICEL",
-                "Surgicel",
-                "surgicel"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 71
-            }
-          ]
-        },
-        {
-          "mention": "propofol",
-          "type": "Medication",
-          "start": 4334,
-          "end": 4342,
-          "linked_entity": {
-            "id": "MED:propofol",
-            "name": "propofol",
-            "type": "Medication",
-            "aliases": [
-              "PROPO",
-              "PROPOFOL",
-              "Propo",
-              "Propofol",
-              "propo",
-              "propofol"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 115
-          },
-          "candidates": [
-            {
-              "id": "MED:propofol",
-              "name": "propofol",
-              "type": "Medication",
-              "aliases": [
-                "PROPO",
-                "PROPOFOL",
-                "Propo",
-                "Propofol",
-                "propo",
-                "propofol"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 115
-            }
-          ]
-        },
-        {
-          "mention": "Neo-Synephrine",
-          "type": "Medication",
-          "start": 4347,
-          "end": 4361,
-          "linked_entity": {
-            "id": "MED:phenylephrine 1% nasal spray",
-            "name": "phenylephrine 1% nasal spray",
-            "type": "Medication",
-            "aliases": [
-              "NEO-SYNEPHRINE",
-              "Neo-Synephrine",
-              "PHENYLEPHRINE 1% NASAL SPRAY",
-              "Phenylephrine 1% Nasal Spray",
-              "neo synephrine",
-              "neo-synephrine",
-              "neosynephrine",
-              "phenylephrine 1  nasal spray",
-              "phenylephrine 1 nasal spray",
-              "phenylephrine 1% nasal spray"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 115
-          },
-          "candidates": [
-            {
-              "id": "MED:phenylephrine 1% nasal spray",
-              "name": "phenylephrine 1% nasal spray",
-              "type": "Medication",
-              "aliases": [
-                "NEO-SYNEPHRINE",
-                "Neo-Synephrine",
-                "PHENYLEPHRINE 1% NASAL SPRAY",
-                "Phenylephrine 1% Nasal Spray",
-                "neo synephrine",
-                "neo-synephrine",
-                "neosynephrine",
-                "phenylephrine 1  nasal spray",
-                "phenylephrine 1 nasal spray",
-                "phenylephrine 1% nasal spray"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 115
-            }
-          ]
-        },
-        {
-          "mention": "extubated",
-          "type": "Procedure",
-          "start": 4549,
-          "end": 4558,
-          "linked_entity": null,
-          "candidates": []
-        },
-        {
-          "mention": "floor",
-          "type": "Anatomy",
-          "start": 4617,
-          "end": 4622,
-          "linked_entity": {
-            "id": "ADMINMED:floor",
-            "name": "floor",
-            "type": "Medication",
-            "aliases": [
-              "FLOOR",
-              "Floor",
-              "floor"
-            ],
-            "definition": null,
-            "source": "inputevents",
-            "score": 108
-          },
-          "candidates": [
-            {
-              "id": "ADMINMED:floor",
-              "name": "floor",
-              "type": "Medication",
-              "aliases": [
-                "FLOOR",
-                "Floor",
-                "floor"
-              ],
-              "definition": null,
-              "source": "inputevents",
-              "score": 108
-            }
-          ]
-        },
-        {
-          "mention": "mobility",
-          "type": "Symptom",
-          "start": 4773,
-          "end": 4781,
-          "linked_entity": null,
-          "candidates": []
-        },
-        {
-          "mention": "strength",
-          "type": "Symptom",
-          "start": 4783,
-          "end": 4791,
-          "linked_entity": null,
-          "candidates": []
-        },
-        {
-          "mention": "endurance",
-          "type": "Symptom",
-          "start": 4796,
-          "end": 4805,
-          "linked_entity": {
-            "id": "MED:endur-acin",
-            "name": "endur-acin",
-            "type": "Medication",
-            "aliases": [
-              "ENDUR-ACIN",
-              "Endur-Acin",
-              "endur acin",
-              "endur-acin",
-              "enduracin"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 82
-          },
-          "candidates": [
-            {
-              "id": "MED:endur-acin",
-              "name": "endur-acin",
-              "type": "Medication",
-              "aliases": [
-                "ENDUR-ACIN",
-                "Endur-Acin",
-                "endur acin",
-                "endur-acin",
-                "enduracin"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 82
-            },
-            {
-              "id": "MED:endur-acin",
-              "name": "endur-acin",
-              "type": "Medication",
-              "aliases": [
-                "ENDUR-ACIN",
-                "Endur-Acin",
-                "endur acin",
-                "endur-acin",
-                "enduracin"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 82
-            },
-            {
-              "id": "MED:endur-acin",
-              "name": "endur-acin",
-              "type": "Medication",
-              "aliases": [
-                "ENDUR-ACIN",
-                "Endur-Acin",
-                "endur acin",
-                "endur-acin",
-                "enduracin"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 82
-            },
-            {
-              "id": "MED:endur-acin",
-              "name": "endur-acin",
-              "type": "Medication",
-              "aliases": [
-                "ENDUR-ACIN",
-                "Endur-Acin",
-                "endur acin",
-                "endur-acin",
-                "enduracin"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 82
-            },
-            {
-              "id": "MED:endur-acin",
-              "name": "endur-acin",
-              "type": "Medication",
-              "aliases": [
-                "ENDUR-ACIN",
-                "Endur-Acin",
-                "endur acin",
-                "endur-acin",
-                "enduracin"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 82
-            },
-            {
-              "id": "MED:endur-acin",
-              "name": "endur-acin",
-              "type": "Medication",
-              "aliases": [
-                "ENDUR-ACIN",
-                "Endur-Acin",
-                "endur acin",
-                "endur-acin",
-                "enduracin"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 82
-            }
-          ]
-        },
-        {
-          "mention": "Lasix",
-          "type": "Medication",
-          "start": 4843,
-          "end": 4848,
-          "linked_entity": {
-            "id": "MED:furosemide",
-            "name": "furosemide",
-            "type": "Medication",
-            "aliases": [
-              "FUROSEMIDE",
-              "Furosemide",
-              "LASIX",
-              "Lasix",
-              "furosemide",
-              "lasix"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 115
-          },
-          "candidates": [
-            {
-              "id": "MED:furosemide",
-              "name": "furosemide",
-              "type": "Medication",
-              "aliases": [
-                "FUROSEMIDE",
-                "Furosemide",
-                "LASIX",
-                "Lasix",
-                "furosemide",
-                "lasix"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 115
-            }
-          ]
-        },
-        {
-          "mention": "hyperglycemia",
-          "type": "Disease",
-          "start": 4924,
-          "end": 4937,
-          "linked_entity": null,
-          "candidates": []
         }
       ],
       "metrics": {
-        "total_entities": 24,
-        "successful_links": 14,
-        "linking_accuracy": 0.5833333333333334
+        "total_entities": 14,
+        "successful_links": 9,
+        "linking_accuracy": 0.6428571428571429,
+        "num_entities_with_gold": 5,
+        "metrics_at_k": {
+          "1": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "3": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5
+          },
+          "5": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.33333333333333337
+          },
+          "10": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 5,
+            "pred": 5,
+            "relevant": 5
+          },
+          "3": {
+            "hits": 5,
+            "pred": 15,
+            "relevant": 5
+          },
+          "5": {
+            "hits": 5,
+            "pred": 25,
+            "relevant": 5
+          },
+          "10": {
+            "hits": 5,
+            "pred": 50,
+            "relevant": 5
+          }
+        }
       }
     },
     {
@@ -1498,391 +1668,52 @@
       "metrics": {
         "total_entities": 1,
         "successful_links": 0,
-        "linking_accuracy": 0.0
-      }
-    },
-    {
-      "subject_id": 17,
-      "category": "Discharge summary",
-      "text": "Admission Date: Discharge Date: Date of Birth: Sex: F Service: CARDIOTHORACIC Allergies: Bactrim / Ampicillin / Remeron Attending: Chief Complaint: chest pressure/cardiac tamponade/ cardiogenic shock Major Surgical or Invasive Procedure: emergent sternotomy for pericardial window History of Present Illness: Underwent min. inv. PFO closure in . Had emergent admission on for hypotension, pericardial effusion , pleural effusion and chest pain for several days. Did not resolve with pain med and had increasing SOB. Admitted to ER for emergent eval. and bedside TTE. Started on dopamine drip for hypotension. Past Medical History: s/p min. inv. closure of Patent foramen ovale ; History of Stroke/TIA; Depression; Anxiety; Borderline Hyperlipidemia; Herniation of Cervical Discs; Patella-Femoral Syndrome; s/p Bunionectomies Social History: Denies tobacco. Admits to occasional ETOH. She is an employee of the in the Neuro-Pysch Department. She is married with two children. She denies IVDA and recreational drugs. Family History: Father underwent CABG at age 72. Cousin died of an MI at age 46. Physical Exam: pt. in distress SBP 70- 80's lungs CTA tachycardic, RR, no murmur or rubs palpable pedal pulses Pertinent Results: 08:40AM BLOOD WBC-11.3* RBC-3.62* Hgb-9.9* Hct-28.8* MCV-80* MCH-27.3 MCHC-34.3 RDW-14.4 Plt Ct-413 11:45AM BLOOD Neuts-86.5* Lymphs-7.0* Monos-5.2 Eos-1.2 Baso-0.2 08:40AM BLOOD Plt Ct-413 08:40AM BLOOD Glucose-118* UreaN-8 Creat-0.6 Na-136 K-3.7 Cl-102 HCO3-24 AnGap-14 11:45AM BLOOD CK(CPK)-26 11:45AM BLOOD CK-MB-NotDone cTropnT-<0.01 Brief Hospital Course: Admitted through ER as above and referred to CT for emergent pericardial window/pericardectomy via sternotomy, as the patient was hypotensive.This was performed by Dr. on . Transferred to CSRU in stable condition on phenylephrine and propofol drips. Extubated and awoke neurologically intact. Beta blockade started on POD #1 and transferred out to the floor to start increasing her activity level. Mediastinal tubes removed on POD #1. Crepitus was noted on anterior chest wall after pleural tubes removed on POD #2. Beta blockade also titrated up. Crepitus improved and CXR confirmed. She made good progress and was discharged to home with VNA services on POD #4. Medications on Admission: ASA 325 mg daily Discharge Medications: 1. Docusate Sodium 100 mg Capsule Sig: One (1) Capsule PO BID (2 times a day) for 1 months. Disp:*60 Capsule(s)* Refills:*0* 2. Ranitidine HCl 150 mg Tablet Sig: One (1) Tablet PO BID (2 times a day) for 1 months. Disp:*60 Tablet(s)* Refills:*0* 3. Aspirin 81 mg Tablet, Delayed Release (E.C.) Sig: One (1) Tablet, Delayed Release (E.C.) PO DAILY (Daily). Disp:*30 Tablet, Delayed Release (E.C.)(s)* Refills:*2* 4. Acetaminophen 325 mg Tablet Sig: Two (2) Tablet PO Q4H (every 4 hours) as needed. Disp:*30 Tablet(s)* Refills:*0* 5. Oxycodone-Acetaminophen 5-325 mg Tablet Sig: 1-2 Tablets PO Q4H (every 4 hours) as needed for pain. Disp:*40 Tablet(s)* Refills:*0* 6. Furosemide 20 mg Tablet Sig: One (1) Tablet PO once a day for 3 days. Disp:*3 Tablet(s)* Refills:*0* 7. Potassium Chloride 20 mEq Packet Sig: One (1) Packet PO once a day for 3 days. Disp:*3 Packet(s)* Refills:*0* 8. Metoprolol Tartrate 25 mg Tablet Sig: 1.5 Tablets PO BID (2 times a day). Disp:*90 Tablet(s)* Refills:*1* Discharge Disposition: Home With Service Facility: Discharge Diagnosis: s/p emergent pericardial window via sternotomy cardiogenic shock/tamponade s/p Min inv. PFO closure s/p CVA anxiety/depression cervical disc herniation patella-femoral syndrome borderline hyperlipidemia Discharge Condition: stable Discharge Instructions: may shower over incision and gently pat dry no lotions, creams or powders on incision no driving for one month no lifting greater than 10 pounds for 10 weeks call for fever greater than 100, redness or drainage Followup Instructions: follow up with Dr. (PCP) in weeks follow up with Dr. (Card)in weeks follow up with Dr. in 4 weeks Completed by:",
-      "entities": [
-        {
-          "mention": "Beta blockade",
-          "type": "Medication",
-          "start": 2104,
-          "end": 2117,
-          "linked_entity": null,
-          "candidates": []
-        },
-        {
-          "mention": "Crepitus",
-          "type": "Symptom",
-          "start": 2136,
-          "end": 2144,
-          "linked_entity": null,
-          "candidates": []
-        },
-        {
-          "mention": "CXR",
-          "type": "Procedure",
-          "start": 2158,
-          "end": 2161,
-          "linked_entity": null,
-          "candidates": []
-        },
-        {
-          "mention": "VNA",
-          "type": "Anatomy",
-          "start": 2228,
-          "end": 2231,
-          "linked_entity": null,
-          "candidates": []
-        },
-        {
-          "mention": "Docusate Sodium",
-          "type": "Medication",
-          "start": 2321,
-          "end": 2336,
-          "linked_entity": {
-            "id": "MED:docusate sodium-casanthranol",
-            "name": "docusate sodium-casanthranol",
-            "type": "Medication",
-            "aliases": [
-              "DOCUSATE SODIUM",
-              "DOCUSATE SODIUM-CASANTHRANOL",
-              "Docusate Sodium",
-              "Docusate Sodium-Casanthranol",
-              "docusate sodium",
-              "docusate sodium casanthranol",
-              "docusate sodium-casanthranol",
-              "docusate sodiumcasanthranol"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 115
+        "linking_accuracy": 0.0,
+        "num_entities_with_gold": 0,
+        "metrics_at_k": {
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
           },
-          "candidates": [
-            {
-              "id": "MED:docusate sodium-casanthranol",
-              "name": "docusate sodium-casanthranol",
-              "type": "Medication",
-              "aliases": [
-                "DOCUSATE SODIUM",
-                "DOCUSATE SODIUM-CASANTHRANOL",
-                "Docusate Sodium",
-                "Docusate Sodium-Casanthranol",
-                "docusate sodium",
-                "docusate sodium casanthranol",
-                "docusate sodium-casanthranol",
-                "docusate sodiumcasanthranol"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 115
-            }
-          ]
-        },
-        {
-          "mention": "Ranitidine HCl",
-          "type": "Medication",
-          "start": 2446,
-          "end": 2460,
-          "linked_entity": {
-            "id": "MED:ranitidine hcl",
-            "name": "ranitidine hcl",
-            "type": "Medication",
-            "aliases": [
-              "RANITIDINE",
-              "RANITIDINE HCL",
-              "Ranitidine",
-              "Ranitidine Hcl",
-              "ranitidine",
-              "ranitidine hcl"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 115
+          "3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
           },
-          "candidates": [
-            {
-              "id": "MED:ranitidine hcl",
-              "name": "ranitidine hcl",
-              "type": "Medication",
-              "aliases": [
-                "RANITIDINE",
-                "RANITIDINE HCL",
-                "Ranitidine",
-                "Ranitidine Hcl",
-                "ranitidine",
-                "ranitidine hcl"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 115
-            }
-          ]
-        },
-        {
-          "mention": "Aspirin",
-          "type": "Medication",
-          "start": 2567,
-          "end": 2574,
-          "linked_entity": {
-            "id": "MED:aspirin",
-            "name": "aspirin",
-            "type": "Medication",
-            "aliases": [
-              "ASPIRIN",
-              "Aspirin",
-              "DOPAMINE",
-              "Dopamine",
-              "aspirin",
-              "dopamine"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 115
+          "5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
           },
-          "candidates": [
-            {
-              "id": "MED:aspirin",
-              "name": "aspirin",
-              "type": "Medication",
-              "aliases": [
-                "ASPIRIN",
-                "Aspirin",
-                "DOPAMINE",
-                "Dopamine",
-                "aspirin",
-                "dopamine"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 115
-            }
-          ]
+          "10": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
         },
-        {
-          "mention": "Acetaminophen",
-          "type": "Medication",
-          "start": 2733,
-          "end": 2746,
-          "linked_entity": {
-            "id": "MED:acetaminophen",
-            "name": "acetaminophen",
-            "type": "Medication",
-            "aliases": [
-              "ACETAMINOPHEN",
-              "Acetaminophen",
-              "TYLENOL PM EXTRA STRENGTH",
-              "Tylenol Pm Extra Strength",
-              "acetaminophen",
-              "tylenol pm extra strength"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 115
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
           },
-          "candidates": [
-            {
-              "id": "MED:acetaminophen",
-              "name": "acetaminophen",
-              "type": "Medication",
-              "aliases": [
-                "ACETAMINOPHEN",
-                "Acetaminophen",
-                "TYLENOL PM EXTRA STRENGTH",
-                "Tylenol Pm Extra Strength",
-                "acetaminophen",
-                "tylenol pm extra strength"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 115
-            }
-          ]
-        },
-        {
-          "mention": "Oxycodone-Acetaminophen",
-          "type": "Medication",
-          "start": 2850,
-          "end": 2873,
-          "linked_entity": {
-            "id": "MED:oxycodone-acetaminophen (5mg-325mg)",
-            "name": "oxycodone-acetaminophen (5mg-325mg)",
-            "type": "Medication",
-            "aliases": [
-              "OXYCODONE-ACETAMINOPHEN",
-              "OXYCODONE-ACETAMINOPHEN (5MG-325MG)",
-              "Oxycodone-Acetaminophen",
-              "Oxycodone-Acetaminophen (5Mg-325Mg)",
-              "oxycodone acetaminophen",
-              "oxycodone acetaminophen  5mg 325mg",
-              "oxycodone-acetaminophen",
-              "oxycodone-acetaminophen (5mg-325mg)",
-              "oxycodoneacetaminophen",
-              "oxycodoneacetaminophen 5mg325mg"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 115
+          "3": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
           },
-          "candidates": [
-            {
-              "id": "MED:oxycodone-acetaminophen (5mg-325mg)",
-              "name": "oxycodone-acetaminophen (5mg-325mg)",
-              "type": "Medication",
-              "aliases": [
-                "OXYCODONE-ACETAMINOPHEN",
-                "OXYCODONE-ACETAMINOPHEN (5MG-325MG)",
-                "Oxycodone-Acetaminophen",
-                "Oxycodone-Acetaminophen (5Mg-325Mg)",
-                "oxycodone acetaminophen",
-                "oxycodone acetaminophen  5mg 325mg",
-                "oxycodone-acetaminophen",
-                "oxycodone-acetaminophen (5mg-325mg)",
-                "oxycodoneacetaminophen",
-                "oxycodoneacetaminophen 5mg325mg"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 115
-            }
-          ]
-        },
-        {
-          "mention": "Furosemide",
-          "type": "Medication",
-          "start": 2985,
-          "end": 2995,
-          "linked_entity": {
-            "id": "MED:furosemide (elixir)",
-            "name": "furosemide (elixir)",
-            "type": "Medication",
-            "aliases": [
-              "FUROSEMIDE",
-              "FUROSEMIDE (ELIXIR)",
-              "Furosemide",
-              "Furosemide (Elixir)",
-              "furosemide",
-              "furosemide  elixir",
-              "furosemide (elixir)",
-              "furosemide elixir"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 115
+          "5": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
           },
-          "candidates": [
-            {
-              "id": "MED:furosemide (elixir)",
-              "name": "furosemide (elixir)",
-              "type": "Medication",
-              "aliases": [
-                "FUROSEMIDE",
-                "FUROSEMIDE (ELIXIR)",
-                "Furosemide",
-                "Furosemide (Elixir)",
-                "furosemide",
-                "furosemide  elixir",
-                "furosemide (elixir)",
-                "furosemide elixir"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 115
-            }
-          ]
-        },
-        {
-          "mention": "Potassium Chloride",
-          "type": "Medication",
-          "start": 3089,
-          "end": 3107,
-          "linked_entity": {
-            "id": "MED:potassium chloride",
-            "name": "potassium chloride",
-            "type": "Medication",
-            "aliases": [
-              "POTASSIUM CHLORIDE",
-              "POTASSIUM CHLORIDE REPLACEMENT (ONCOLOGY)",
-              "Potassium Chloride",
-              "Potassium Chloride Replacement (Oncology)",
-              "potassium chloride",
-              "potassium chloride replacement  oncology",
-              "potassium chloride replacement (oncology)",
-              "potassium chloride replacement oncology"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 115
-          },
-          "candidates": [
-            {
-              "id": "MED:potassium chloride",
-              "name": "potassium chloride",
-              "type": "Medication",
-              "aliases": [
-                "POTASSIUM CHLORIDE",
-                "POTASSIUM CHLORIDE REPLACEMENT (ONCOLOGY)",
-                "Potassium Chloride",
-                "Potassium Chloride Replacement (Oncology)",
-                "potassium chloride",
-                "potassium chloride replacement  oncology",
-                "potassium chloride replacement (oncology)",
-                "potassium chloride replacement oncology"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 115
-            }
-          ]
-        },
-        {
-          "mention": "Metoprolol Tartrate",
-          "type": "Medication",
-          "start": 3202,
-          "end": 3221,
-          "linked_entity": {
-            "id": "MED:metoprolol tartrate suspension",
-            "name": "metoprolol tartrate suspension",
-            "type": "Medication",
-            "aliases": [
-              "METOPROLOL TARTRATE",
-              "METOPROLOL TARTRATE SUSPENSION",
-              "Metoprolol Tartrate",
-              "Metoprolol Tartrate Suspension",
-              "metoprolol tartrate",
-              "metoprolol tartrate suspension"
-            ],
-            "definition": null,
-            "source": "prescriptions",
-            "score": 115
-          },
-          "candidates": [
-            {
-              "id": "MED:metoprolol tartrate suspension",
-              "name": "metoprolol tartrate suspension",
-              "type": "Medication",
-              "aliases": [
-                "METOPROLOL TARTRATE",
-                "METOPROLOL TARTRATE SUSPENSION",
-                "Metoprolol Tartrate",
-                "Metoprolol Tartrate Suspension",
-                "metoprolol tartrate",
-                "metoprolol tartrate suspension"
-              ],
-              "definition": null,
-              "source": "prescriptions",
-              "score": 115
-            }
-          ]
+          "10": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          }
         }
-      ],
-      "metrics": {
-        "total_entities": 12,
-        "successful_links": 8,
-        "linking_accuracy": 0.6666666666666666
       }
     },
     {
@@ -1893,18 +1724,108 @@
       "metrics": {
         "total_entities": 0,
         "successful_links": 0,
-        "linking_accuracy": 0.0
+        "linking_accuracy": 0.0,
+        "num_entities_with_gold": 0,
+        "metrics_at_k": {
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "10": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "3": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "5": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "10": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          }
+        }
       }
     },
     {
-      "subject_id": 18,
+      "subject_id": 17,
       "category": "Discharge summary",
-      "text": "Name: JR, P Unit No: Admission Date: Discharge Date: Date of Birth: Sex: M Service: PSYCHIATRY Allergies: Bactrim Attending: Addendum: MEDICATIONS ON ADMISSION: Klonopin 3mg PO BID Lexapro 20mg PO daily Nortriptyline 50mg PO daily Crestor 10mg PO daily Seroquel 50mg PO TID Trazodone 200mg PO qHS:PRN Insulin, standing and SS MEDICATIONS ON DISCHARGE: Klonopin 3mg PO BID Lexapro 20mg PO daily Nortriptyline 50mg PO daily Crestor 10mg PO daily Seroquel 50mg PO TID Trazodone 200mg PO qHS:PRN Ambien 10mg PO qHS:PRN Insulin, standing and SS Discharge Disposition: Extended Care Facility: MD Completed by:",
+      "text": "Admission Date: Discharge Date: Date of Birth: Sex: F Service: CARDIOTHORACIC Allergies: Bactrim / Ampicillin / Remeron Attending: Chief Complaint: chest pressure/cardiac tamponade/ cardiogenic shock Major Surgical or Invasive Procedure: emergent sternotomy for pericardial window History of Present Illness: Underwent min. inv. PFO closure in . Had emergent admission on for hypotension, pericardial effusion , pleural effusion and chest pain for several days. Did not resolve with pain med and had increasing SOB. Admitted to ER for emergent eval. and bedside TTE. Started on dopamine drip for hypotension. Past Medical History: s/p min. inv. closure of Patent foramen ovale ; History of Stroke/TIA; Depression; Anxiety; Borderline Hyperlipidemia; Herniation of Cervical Discs; Patella-Femoral Syndrome; s/p Bunionectomies Social History: Denies tobacco. Admits to occasional ETOH. She is an employee of the in the Neuro-Pysch Department. She is married with two children. She denies IVDA and recreational drugs. Family History: Father underwent CABG at age 72. Cousin died of an MI at age 46. Physical Exam: pt. in distress SBP 70- 80's lungs CTA tachycardic, RR, no murmur or rubs palpable pedal pulses Pertinent Results: 08:40AM BLOOD WBC-11.3* RBC-3.62* Hgb-9.9* Hct-28.8* MCV-80* MCH-27.3 MCHC-34.3 RDW-14.4 Plt Ct-413 11:45AM BLOOD Neuts-86.5* Lymphs-7.0* Monos-5.2 Eos-1.2 Baso-0.2 08:40AM BLOOD Plt Ct-413 08:40AM BLOOD Glucose-118* UreaN-8 Creat-0.6 Na-136 K-3.7 Cl-102 HCO3-24 AnGap-14 11:45AM BLOOD CK(CPK)-26 11:45AM BLOOD CK-MB-NotDone cTropnT-<0.01 Brief Hospital Course: Admitted through ER as above and referred to CT for emergent pericardial window/pericardectomy via sternotomy, as the patient was hypotensive.This was performed by Dr. on . Transferred to CSRU in stable condition on phenylephrine and propofol drips. Extubated and awoke neurologically intact. Beta blockade started on POD #1 and transferred out to the floor to start increasing her activity level. Mediastinal tubes removed on POD #1. Crepitus was noted on anterior chest wall after pleural tubes removed on POD #2. Beta blockade also titrated up. Crepitus improved and CXR confirmed. She made good progress and was discharged to home with VNA services on POD #4. Medications on Admission: ASA 325 mg daily Discharge Medications: 1. Docusate Sodium 100 mg Capsule Sig: One (1) Capsule PO BID (2 times a day) for 1 months. Disp:*60 Capsule(s)* Refills:*0* 2. Ranitidine HCl 150 mg Tablet Sig: One (1) Tablet PO BID (2 times a day) for 1 months. Disp:*60 Tablet(s)* Refills:*0* 3. Aspirin 81 mg Tablet, Delayed Release (E.C.) Sig: One (1) Tablet, Delayed Release (E.C.) PO DAILY (Daily). Disp:*30 Tablet, Delayed Release (E.C.)(s)* Refills:*2* 4. Acetaminophen 325 mg Tablet Sig: Two (2) Tablet PO Q4H (every 4 hours) as needed. Disp:*30 Tablet(s)* Refills:*0* 5. Oxycodone-Acetaminophen 5-325 mg Tablet Sig: 1-2 Tablets PO Q4H (every 4 hours) as needed for pain. Disp:*40 Tablet(s)* Refills:*0* 6. Furosemide 20 mg Tablet Sig: One (1) Tablet PO once a day for 3 days. Disp:*3 Tablet(s)* Refills:*0* 7. Potassium Chloride 20 mEq Packet Sig: One (1) Packet PO once a day for 3 days. Disp:*3 Packet(s)* Refills:*0* 8. Metoprolol Tartrate 25 mg Tablet Sig: 1.5 Tablets PO BID (2 times a day). Disp:*90 Tablet(s)* Refills:*1* Discharge Disposition: Home With Service Facility: Discharge Diagnosis: s/p emergent pericardial window via sternotomy cardiogenic shock/tamponade s/p Min inv. PFO closure s/p CVA anxiety/depression cervical disc herniation patella-femoral syndrome borderline hyperlipidemia Discharge Condition: stable Discharge Instructions: may shower over incision and gently pat dry no lotions, creams or powders on incision no driving for one month no lifting greater than 10 pounds for 10 weeks call for fever greater than 100, redness or drainage Followup Instructions: follow up with Dr. (PCP) in weeks follow up with Dr. (Card)in weeks follow up with Dr. in 4 weeks Completed by:",
       "entities": [],
       "metrics": {
         "total_entities": 0,
         "successful_links": 0,
-        "linking_accuracy": 0.0
+        "linking_accuracy": 0.0,
+        "num_entities_with_gold": 0,
+        "metrics_at_k": {
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "10": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "3": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "5": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "10": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          }
+        }
       }
     },
     {
@@ -1915,18 +1836,108 @@
       "metrics": {
         "total_entities": 0,
         "successful_links": 0,
-        "linking_accuracy": 0.0
+        "linking_accuracy": 0.0,
+        "num_entities_with_gold": 0,
+        "metrics_at_k": {
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "10": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "3": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "5": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "10": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          }
+        }
       }
     },
     {
-      "subject_id": 20,
+      "subject_id": 18,
       "category": "Discharge summary",
-      "text": "Admission Date: Discharge Date: Date of Birth: Sex: F Service: HISTORY OF PRESENT ILLNESS: The patient is a 65-year-old woman status post coronary artery bypass grafting times three on and discharged home on , who the day prior to admission noted increasing redness of her right lower extremity at the saphenectomy site. She denied fevers, chills or leg pain. She had no shortness of breath and otherwise felt well. PAST MEDICAL HISTORY: Coronary artery disease status post coronary artery bypass grafting. Non-insulin-dependent diabetes mellitus. Hypertension. Arthritis. Total abdominal hysterectomy. Appendectomy. ALLERGIES: ZESTRIL. MEDICATIONS: Lasix 20 b.i.d., Potassium Chloride 20 b.i.d., Colace 100 b.i.d., Aspirin 325 q.d., Glipizide 5 q.d., Lipitor 20 q.d., Valsartan 60 q.d., Lopressor 50 b.i.d., Percocet p.r.n. PHYSICAL EXAMINATION: Vital signs: Temperature 98.4??????, heart rate 64 in sinus rhythm, blood pressure 156/43, respirations 20, oxygen saturation 98% on room air. General: Well appearing in no acute distress. HEENT: Pupils equal, round and reactive to light. Extraocular movements intact. Anicteric. Noninjected. Neck: Supple. No lymphadenopathy. Cardiovascular: Regular, rate and rhythm. Lungs: Clear but with diminished breath sounds at the bases. Abdomen: Soft and nontender. Positive bowel sounds. Extremities: Dopplerable pulses of both dorsalis pedis and posterior tibial bilaterally. Right lower extremity with multiple areas of erythema and warmth. Tender to touch along the saphenectomy site with scant serous drainage. LABORATORY DATA: White count 14.1, hematocrit 30.5, platelet count 494; sodium 136, potassium 4.9, chloride 101, CO2 22, BUN 21, creatinine 1.1, glucose 195. The patient at that time underwent a lower extremity ultrasound to rule out deep venous thrombosis. The exam showed no evidence of deep venous thrombosis. HOSPITAL COURSE: The patient was admitted to ................... She was begun on Vancomycin and Levofloxacin for her lower extremity cellulitis. Over the next two days, the patient's cellulitis improved. On hospital day #3, it was decided that she was stable and ready for discharge to home. At the time of discharge the patient's physical exam revealed her vitals signs to be stable, afebrile and alert and oriented times three. She moves all extremities. Breath sounds were clear to auscultation bilaterally. Heart sounds were regular, rate and rhythm. Sternal incision is healing well with no erythema or purulence. Abdomen soft, nontender and nondistended. Extremities with no edema. Right lower extremity saphenous vein graft site incision clean and dry with mild surrounding erythema decreased from the previous day with no drainage at this time. DISCHARGE MEDICATIONS: Lasix 20 mg b.i.d., Colace 100 mg b.i.d., Aspirin 325 q.d., Percocet tab q. p.r.n., Glipizide 5 mg b.i.d., Lipitor 20 mg q.d., Valsartan 160 mg q.d., Lopressor 50 mg b.i.d., Ciprofloxacin 500 mg p.o. q.12 hours x 10 days. DISCHARGE DIAGNOSIS: 1. Coronary artery disease status post coronary artery bypass grafting times three. 2. Non-insulin-dependent diabetes mellitus. 3. Hypertension. 4. Arthritis. 5. Total abdominal hysterectomy. 6. Appendectomy. 7. Cellulitis of the right lower extremity at saphenous vein graft site. DISPOSITION: She is to be discharged to home. FOLLOW-UP: She is to have follow-up with her primary care physician in two weeks. She is to follow-up with Dr. in his office four weeks from the date of her initial discharge from coronary artery bypass grafting; appointment to be made by the patient. , M.D. Dictated By: MEDQUIST36 D: 09:27 T: 09:32 JOB#:",
+      "text": "Name: JR, P Unit No: Admission Date: Discharge Date: Date of Birth: Sex: M Service: PSYCHIATRY Allergies: Bactrim Attending: Addendum: MEDICATIONS ON ADMISSION: Klonopin 3mg PO BID Lexapro 20mg PO daily Nortriptyline 50mg PO daily Crestor 10mg PO daily Seroquel 50mg PO TID Trazodone 200mg PO qHS:PRN Insulin, standing and SS MEDICATIONS ON DISCHARGE: Klonopin 3mg PO BID Lexapro 20mg PO daily Nortriptyline 50mg PO daily Crestor 10mg PO daily Seroquel 50mg PO TID Trazodone 200mg PO qHS:PRN Ambien 10mg PO qHS:PRN Insulin, standing and SS Discharge Disposition: Extended Care Facility: MD Completed by:",
       "entities": [],
       "metrics": {
         "total_entities": 0,
         "successful_links": 0,
-        "linking_accuracy": 0.0
+        "linking_accuracy": 0.0,
+        "num_entities_with_gold": 0,
+        "metrics_at_k": {
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "10": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "3": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "5": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "10": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          }
+        }
       }
     },
     {
@@ -1946,7 +1957,108 @@
       "metrics": {
         "total_entities": 1,
         "successful_links": 0,
-        "linking_accuracy": 0.0
+        "linking_accuracy": 0.0,
+        "num_entities_with_gold": 0,
+        "metrics_at_k": {
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "10": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "3": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "5": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "10": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          }
+        }
+      }
+    },
+    {
+      "subject_id": 20,
+      "category": "Discharge summary",
+      "text": "Admission Date: Discharge Date: Date of Birth: Sex: F Service: HISTORY OF PRESENT ILLNESS: The patient is a 65-year-old woman status post coronary artery bypass grafting times three on and discharged home on , who the day prior to admission noted increasing redness of her right lower extremity at the saphenectomy site. She denied fevers, chills or leg pain. She had no shortness of breath and otherwise felt well. PAST MEDICAL HISTORY: Coronary artery disease status post coronary artery bypass grafting. Non-insulin-dependent diabetes mellitus. Hypertension. Arthritis. Total abdominal hysterectomy. Appendectomy. ALLERGIES: ZESTRIL. MEDICATIONS: Lasix 20 b.i.d., Potassium Chloride 20 b.i.d., Colace 100 b.i.d., Aspirin 325 q.d., Glipizide 5 q.d., Lipitor 20 q.d., Valsartan 60 q.d., Lopressor 50 b.i.d., Percocet p.r.n. PHYSICAL EXAMINATION: Vital signs: Temperature 98.4??????, heart rate 64 in sinus rhythm, blood pressure 156/43, respirations 20, oxygen saturation 98% on room air. General: Well appearing in no acute distress. HEENT: Pupils equal, round and reactive to light. Extraocular movements intact. Anicteric. Noninjected. Neck: Supple. No lymphadenopathy. Cardiovascular: Regular, rate and rhythm. Lungs: Clear but with diminished breath sounds at the bases. Abdomen: Soft and nontender. Positive bowel sounds. Extremities: Dopplerable pulses of both dorsalis pedis and posterior tibial bilaterally. Right lower extremity with multiple areas of erythema and warmth. Tender to touch along the saphenectomy site with scant serous drainage. LABORATORY DATA: White count 14.1, hematocrit 30.5, platelet count 494; sodium 136, potassium 4.9, chloride 101, CO2 22, BUN 21, creatinine 1.1, glucose 195. The patient at that time underwent a lower extremity ultrasound to rule out deep venous thrombosis. The exam showed no evidence of deep venous thrombosis. HOSPITAL COURSE: The patient was admitted to ................... She was begun on Vancomycin and Levofloxacin for her lower extremity cellulitis. Over the next two days, the patient's cellulitis improved. On hospital day #3, it was decided that she was stable and ready for discharge to home. At the time of discharge the patient's physical exam revealed her vitals signs to be stable, afebrile and alert and oriented times three. She moves all extremities. Breath sounds were clear to auscultation bilaterally. Heart sounds were regular, rate and rhythm. Sternal incision is healing well with no erythema or purulence. Abdomen soft, nontender and nondistended. Extremities with no edema. Right lower extremity saphenous vein graft site incision clean and dry with mild surrounding erythema decreased from the previous day with no drainage at this time. DISCHARGE MEDICATIONS: Lasix 20 mg b.i.d., Colace 100 mg b.i.d., Aspirin 325 q.d., Percocet tab q. p.r.n., Glipizide 5 mg b.i.d., Lipitor 20 mg q.d., Valsartan 160 mg q.d., Lopressor 50 mg b.i.d., Ciprofloxacin 500 mg p.o. q.12 hours x 10 days. DISCHARGE DIAGNOSIS: 1. Coronary artery disease status post coronary artery bypass grafting times three. 2. Non-insulin-dependent diabetes mellitus. 3. Hypertension. 4. Arthritis. 5. Total abdominal hysterectomy. 6. Appendectomy. 7. Cellulitis of the right lower extremity at saphenous vein graft site. DISPOSITION: She is to be discharged to home. FOLLOW-UP: She is to have follow-up with her primary care physician in two weeks. She is to follow-up with Dr. in his office four weeks from the date of her initial discharge from coronary artery bypass grafting; appointment to be made by the patient. , M.D. Dictated By: MEDQUIST36 D: 09:27 T: 09:32 JOB#:",
+      "entities": [],
+      "metrics": {
+        "total_entities": 0,
+        "successful_links": 0,
+        "linking_accuracy": 0.0,
+        "num_entities_with_gold": 0,
+        "metrics_at_k": {
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "10": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "3": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "5": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "10": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          }
+        }
       }
     },
     {
@@ -1954,6 +2066,601 @@
       "category": "Discharge summary",
       "text": "Admission Date: Discharge Date: Date of Birth: Sex: F Service: ICU CHIEF COMPLAINT: Unresponsiveness HISTORY OF PRESENT ILLNESS: The patient is a 64-year-old female with a history of hypertension, depression, prior suicide attempt by overdose, recently with exacerbated mood disorder status post the death of her husband in , now presented after being found unresponsive. The patient's daughters found her in the morning of the day of presentation, unresponsive with empty bottles of Ambien and Zyprexa at the bedside. Pill count revealed that the patient had likely taken 26 Ambien and 12 Zyprexa. The patient has been unable to be alone secondary to depression with suicidal ideation, and has been living with her daughters. They note that the patient went to bed at 11 P.M. the night prior to admission and was found at 11 A.M. unresponsive with respiratory depression. The patient had seen her primary psychiatrist the day before. In the Emergency Department, the patient was charcoaled, gastric lavaged, and intubated for airway protection. She was hemodynamically stable. She was transferred to the Intensive Care Unit. In the Intensive Care Unit, the patient was able to open her eyes, and was moving all four extremities and responsive to command. PAST MEDICAL HISTORY: 1. Hypertension 2. Depression with suicide attempt ten years ago by overdose. The patient was hospitalized for two weeks at that point. The patient's outpatient psychiatrist is Dr. . ALLERGIES: No known drug allergies. MEDICATIONS: Zyprexa 2.5 mg by mouth daily at bedtime, Zestril 20 mg by mouth once daily, Ambien 10 mg by mouth daily at bedtime, Estradiol 1 mg by mouth once daily, nortriptyline 25 mg by mouth daily at bedtime, Klonopin 0.5 to 1 mg daily at bedtime, Biotin and calcium supplementation. SOCIAL HISTORY: The patient lives with her daughter. husband died in . The patient denied any tobacco, alcohol or drug use. FAMILY HISTORY: Unknown. PHYSICAL EXAMINATION: The patient's temperature was 97.7, with a blood pressure of 130/65, pulse of 84, respiratory rate of 14, and oxygen saturation of 100%. The patient was ventilated on IMV pressure support with a rate of 14, pressure support of 10, PEEP of 7.5, volume of 500, and 40% FIO2. On general examination, the patient was a very ill-appearing female, in no apparent distress. She was intubated. Head, eyes, ears, nose and throat examination revealed 1 to 2 mm nonreactive pupils. Neck examination revealed no jugular venous distention and no bruits. Cardiac examination revealed a regular rate and rhythm, normal S1 and S2, and no murmurs, gallops or rubs. Pulmonary examination revealed that the lungs were clear to auscultation bilaterally. Abdominal examination revealed a belly that was soft, nontender, nondistended, with normal bowel sounds. Extremity examination revealed no edema, with 2+ dorsalis pedis pulses bilaterally. Neurological examination revealed a patient that was moving all four extremities, opening eyes intermittently, withdrawing to pain. The patient had 2+ deep tendon reflexes, and downgoing plantar reflexes. LABORATORY DATA: The patient had a white blood cell count of 5.1, hematocrit of 35.9, platelets of 259. The patient had a sodium of 140, potassium of 4.4, chloride of 103, bicarbonate of 28, BUN of 17, creatinine of 0.6, and glucose of 102. The patient's INR was 1.1. The patient had an ALT of 19, an AST of 26. Arterial blood gas was performed post-intubation and was found to be pH of 7.47, PACO2 of 29, and PAO2 of 287. Electrocardiogram: Normal sinus rhythm at 80, with normal axis, and intervals, and ST elevations in V2 and Lead I. Other studies: Urine toxicology was negative, serum toxicology was negative. Urinalysis revealed negative nitrates, leukocytes, blood, no red blood cells, no white blood cells, occasional bacteria, and less than one epithelial cell. Head CT: No signs of intracranial hemorrhage or mass effect. HOSPITAL COURSE: The patient is a 64-year-old female with a history of hypertension and depression with suicidal ideation and previous history of overdose attempt, status post likely overdose on Ambien and Zyprexa, status post intubation and hemodynamically stable. 1. Toxicology: Patient with likely Ambien overdose and Zyprexa overdose. Her symptoms of light coma, somnolence and respiratory compromise were consistent with Ambien overdose. The patient also had evidence of myosis, which was consistent with Zyprexa overdose. The patient had been gastric lavaged, charcoaled and supported in the Emergency Department. In the Intensive Care Unit, the patient was supported with intravenous fluids and gradually weaned on the ventilator to the point where she was successfully extubated shortly after arriving to the Intensive Care Unit. 2. Psychiatric: Patient with major depression, recently exacerbated by the loss of her husband, now with a second overdose attempt in her lifetime. Likely Zyprexa and Ambien were the agents responsible. Multiple attempts were made in the effort to contact the patient's outpatient psychiatrist, Dr. . She was unable to be reached. Psychiatry was consulted, who felt that the patient needed inpatient evaluation and treatment. They also recommended psychotropics be avoided, and that the patient have a one-to-one sitter. Social Work and Case Management were consulted. 3. Cardiovascular: Patient was hemodynamically stable with history of hypertension. Her antihypertensives were held. Her electrocardiogram was unremarkable, although there were no studies for comparison. 4. Pulmonary: Patient intubated secondary to decreased mental status without a primary lung process. Post-extubation arterial blood gas did not suggest any obstructive lung process leading to hypercarbia or hypoxemia from other pulmonary process. The examination was unremarkable. A facile extubation was anticipated, and the patient was extubated within several hours of arriving in the Intensive Care Unit. 5. Psychosocial: Communication was maintained with the patient's daughters, who also felt that the patient should receive inpatient evaluation and treatment. CONDITION ON DISCHARGE: Stable. DISCHARGE STATUS: The patient was discharged to an inpatient psychiatric bed. DISCHARGE MEDICATIONS: Zestril 20 mg by mouth once daily, Estradiol 1 mg by mouth once daily. DISCHARGE DIAGNOSIS: 1. Major depression 2. Ambien and Zyprexa overdose 3. Hypertension , M.D. Dictated By: MEDQUIST36 D: 02:10 T: 02:20 JOB#:",
       "entities": [
+        {
+          "mention": "Hypertension",
+          "type": "Disease",
+          "start": 183,
+          "end": 195,
+          "linked_entity": {
+            "id": "ICD9:36211",
+            "name": "hypertensive retinopathy",
+            "type": "Disease",
+            "aliases": [
+              "HYPERTENSIVE RETINOPATHY",
+              "Hypertensive Retinopathy",
+              "hypertensive retinopathy"
+            ],
+            "definition": null,
+            "source": "diagnosis",
+            "score": 77
+          },
+          "candidates": [
+            {
+              "id": "ICD9:36211",
+              "name": "hypertensive retinopathy",
+              "type": "Disease",
+              "aliases": [
+                "HYPERTENSIVE RETINOPATHY",
+                "Hypertensive Retinopathy",
+                "hypertensive retinopathy"
+              ],
+              "definition": null,
+              "source": "diagnosis",
+              "score": 77
+            },
+            {
+              "id": "ICD9:36211",
+              "name": "hypertensive retinopathy",
+              "type": "Disease",
+              "aliases": [
+                "HYPERTENSIVE RETINOPATHY",
+                "Hypertensive Retinopathy",
+                "hypertensive retinopathy"
+              ],
+              "definition": null,
+              "source": "diagnosis",
+              "score": 77
+            },
+            {
+              "id": "ICD9:36211",
+              "name": "hypertensive retinopathy",
+              "type": "Disease",
+              "aliases": [
+                "HYPERTENSIVE RETINOPATHY",
+                "Hypertensive Retinopathy",
+                "hypertensive retinopathy"
+              ],
+              "definition": null,
+              "source": "diagnosis",
+              "score": 77
+            },
+            {
+              "id": "ICD9:36211",
+              "name": "hypertensive retinopathy",
+              "type": "Disease",
+              "aliases": [
+                "HYPERTENSIVE RETINOPATHY",
+                "Hypertensive Retinopathy",
+                "hypertensive retinopathy"
+              ],
+              "definition": null,
+              "source": "diagnosis",
+              "score": 77
+            }
+          ]
+        },
+        {
+          "mention": "Depression",
+          "type": "Disease",
+          "start": 197,
+          "end": 207,
+          "linked_entity": {
+            "id": "MED:desmopressin acetate",
+            "name": "desmopressin acetate",
+            "type": "Medication",
+            "aliases": [
+              "DESMOPRESSIN",
+              "DESMOPRESSIN ACETATE",
+              "Desmopressin",
+              "Desmopressin Acetate",
+              "desmopressin",
+              "desmopressin acetate"
+            ],
+            "definition": null,
+            "source": "prescriptions",
+            "score": 86
+          },
+          "candidates": [
+            {
+              "id": "MED:desmopressin acetate",
+              "name": "desmopressin acetate",
+              "type": "Medication",
+              "aliases": [
+                "DESMOPRESSIN",
+                "DESMOPRESSIN ACETATE",
+                "Desmopressin",
+                "Desmopressin Acetate",
+                "desmopressin",
+                "desmopressin acetate"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 86
+            },
+            {
+              "id": "MED:desmopressin acetate",
+              "name": "desmopressin acetate",
+              "type": "Medication",
+              "aliases": [
+                "DESMOPRESSIN",
+                "DESMOPRESSIN ACETATE",
+                "Desmopressin",
+                "Desmopressin Acetate",
+                "desmopressin",
+                "desmopressin acetate"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 86
+            },
+            {
+              "id": "MED:desmopressin acetate",
+              "name": "desmopressin acetate",
+              "type": "Medication",
+              "aliases": [
+                "DESMOPRESSIN",
+                "DESMOPRESSIN ACETATE",
+                "Desmopressin",
+                "Desmopressin Acetate",
+                "desmopressin",
+                "desmopressin acetate"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 86
+            },
+            {
+              "id": "MED:desmopressin acetate",
+              "name": "desmopressin acetate",
+              "type": "Medication",
+              "aliases": [
+                "DESMOPRESSIN",
+                "DESMOPRESSIN ACETATE",
+                "Desmopressin",
+                "Desmopressin Acetate",
+                "desmopressin",
+                "desmopressin acetate"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 86
+            },
+            {
+              "id": "MED:desmopressin acetate",
+              "name": "desmopressin acetate",
+              "type": "Medication",
+              "aliases": [
+                "DESMOPRESSIN",
+                "DESMOPRESSIN ACETATE",
+                "Desmopressin",
+                "Desmopressin Acetate",
+                "desmopressin",
+                "desmopressin acetate"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 86
+            },
+            {
+              "id": "MED:desmopressin acetate",
+              "name": "desmopressin acetate",
+              "type": "Medication",
+              "aliases": [
+                "DESMOPRESSIN",
+                "DESMOPRESSIN ACETATE",
+                "Desmopressin",
+                "Desmopressin Acetate",
+                "desmopressin",
+                "desmopressin acetate"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 86
+            },
+            {
+              "id": "MED:desmopressin acetate",
+              "name": "desmopressin acetate",
+              "type": "Medication",
+              "aliases": [
+                "DESMOPRESSIN",
+                "DESMOPRESSIN ACETATE",
+                "Desmopressin",
+                "Desmopressin Acetate",
+                "desmopressin",
+                "desmopressin acetate"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 86
+            },
+            {
+              "id": "MED:desmopressin nasal",
+              "name": "desmopressin nasal",
+              "type": "Medication",
+              "aliases": [
+                "DESMOPRESSI",
+                "DESMOPRESSIN NASAL",
+                "Desmopressi",
+                "Desmopressin Nasal",
+                "desmopressi",
+                "desmopressin nasal"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 81
+            }
+          ]
+        },
+        {
+          "mention": "Suicide attempt by overdose",
+          "type": "Other",
+          "start": 215,
+          "end": 242,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "Mood disorder",
+          "type": "Disease",
+          "start": 270,
+          "end": 283,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "Ambien",
+          "type": "Medication",
+          "start": 484,
+          "end": 490,
+          "linked_entity": {
+            "id": "MED:ambien cr",
+            "name": "ambien cr",
+            "type": "Medication",
+            "aliases": [
+              "AMBIEN CR",
+              "Ambien Cr",
+              "ambien cr"
+            ],
+            "definition": null,
+            "source": "prescriptions",
+            "score": 95
+          },
+          "candidates": [
+            {
+              "id": "MED:ambien cr",
+              "name": "ambien cr",
+              "type": "Medication",
+              "aliases": [
+                "AMBIEN CR",
+                "Ambien Cr",
+                "ambien cr"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 95
+            },
+            {
+              "id": "MED:ambien cr",
+              "name": "ambien cr",
+              "type": "Medication",
+              "aliases": [
+                "AMBIEN CR",
+                "Ambien Cr",
+                "ambien cr"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 95
+            },
+            {
+              "id": "MED:ambien cr",
+              "name": "ambien cr",
+              "type": "Medication",
+              "aliases": [
+                "AMBIEN CR",
+                "Ambien Cr",
+                "ambien cr"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 95
+            },
+            {
+              "id": "MED:ambien cr",
+              "name": "ambien cr",
+              "type": "Medication",
+              "aliases": [
+                "AMBIEN CR",
+                "Ambien Cr",
+                "ambien cr"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 95
+            },
+            {
+              "id": "ADMINMED:ambisone",
+              "name": "ambisone",
+              "type": "Medication",
+              "aliases": [
+                "AMBISONE",
+                "Ambisone",
+                "ambisone"
+              ],
+              "definition": null,
+              "source": "inputevents",
+              "score": 89
+            },
+            {
+              "id": "ADMINMED:ambisone",
+              "name": "ambisone",
+              "type": "Medication",
+              "aliases": [
+                "AMBISONE",
+                "Ambisone",
+                "ambisone"
+              ],
+              "definition": null,
+              "source": "inputevents",
+              "score": 89
+            },
+            {
+              "id": "ADMINMED:ambisone",
+              "name": "ambisone",
+              "type": "Medication",
+              "aliases": [
+                "AMBISONE",
+                "Ambisone",
+                "ambisone"
+              ],
+              "definition": null,
+              "source": "inputevents",
+              "score": 89
+            },
+            {
+              "id": "ADMINMED:ambisone",
+              "name": "ambisone",
+              "type": "Medication",
+              "aliases": [
+                "AMBISONE",
+                "Ambisone",
+                "ambisone"
+              ],
+              "definition": null,
+              "source": "inputevents",
+              "score": 89
+            }
+          ]
+        },
+        {
+          "mention": "Zyprexa",
+          "type": "Medication",
+          "start": 495,
+          "end": 502,
+          "linked_entity": {
+            "id": "MED:olanzapine (disintergrating tablet)",
+            "name": "olanzapine (disintergrating tablet)",
+            "type": "Medication",
+            "aliases": [
+              "OLANZAPINE (DISINTERGRATING TABLET)",
+              "Olanzapine (Disintergrating Tablet)",
+              "ZYPREX",
+              "Zyprex",
+              "olanzapine  disintergrating tablet",
+              "olanzapine (disintergrating tablet)",
+              "olanzapine disintergrating tablet",
+              "zyprex"
+            ],
+            "definition": null,
+            "source": "prescriptions",
+            "score": 107
+          },
+          "candidates": [
+            {
+              "id": "MED:olanzapine (disintergrating tablet)",
+              "name": "olanzapine (disintergrating tablet)",
+              "type": "Medication",
+              "aliases": [
+                "OLANZAPINE (DISINTERGRATING TABLET)",
+                "Olanzapine (Disintergrating Tablet)",
+                "ZYPREX",
+                "Zyprex",
+                "olanzapine  disintergrating tablet",
+                "olanzapine (disintergrating tablet)",
+                "olanzapine disintergrating tablet",
+                "zyprex"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 107
+            },
+            {
+              "id": "MED:olanzapine (disintergrating tablet)",
+              "name": "olanzapine (disintergrating tablet)",
+              "type": "Medication",
+              "aliases": [
+                "OLANZAPINE (DISINTERGRATING TABLET)",
+                "Olanzapine (Disintergrating Tablet)",
+                "ZYPREX",
+                "Zyprex",
+                "olanzapine  disintergrating tablet",
+                "olanzapine (disintergrating tablet)",
+                "olanzapine disintergrating tablet",
+                "zyprex"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 107
+            },
+            {
+              "id": "MED:olanzapine (disintergrating tablet)",
+              "name": "olanzapine (disintergrating tablet)",
+              "type": "Medication",
+              "aliases": [
+                "OLANZAPINE (DISINTERGRATING TABLET)",
+                "Olanzapine (Disintergrating Tablet)",
+                "ZYPREX",
+                "Zyprex",
+                "olanzapine  disintergrating tablet",
+                "olanzapine (disintergrating tablet)",
+                "olanzapine disintergrating tablet",
+                "zyprex"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 107
+            },
+            {
+              "id": "MED:olanzapine (disintegrating tablet)",
+              "name": "olanzapine (disintegrating tablet)",
+              "type": "Medication",
+              "aliases": [
+                "OLANZAPINE (DISINTEGRATING TABLET)",
+                "Olanzapine (Disintegrating Tablet)",
+                "ZYPREXA ZYDIS",
+                "Zyprexa Zydis",
+                "olanzapine  disintegrating tablet",
+                "olanzapine (disintegrating tablet)",
+                "olanzapine disintegrating tablet",
+                "zyprexa zydis"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 85
+            },
+            {
+              "id": "MED:olanzapine (disintegrating tablet)",
+              "name": "olanzapine (disintegrating tablet)",
+              "type": "Medication",
+              "aliases": [
+                "OLANZAPINE (DISINTEGRATING TABLET)",
+                "Olanzapine (Disintegrating Tablet)",
+                "ZYPREXA ZYDIS",
+                "Zyprexa Zydis",
+                "olanzapine  disintegrating tablet",
+                "olanzapine (disintegrating tablet)",
+                "olanzapine disintegrating tablet",
+                "zyprexa zydis"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 85
+            },
+            {
+              "id": "MED:olanzapine (disintegrating tablet)",
+              "name": "olanzapine (disintegrating tablet)",
+              "type": "Medication",
+              "aliases": [
+                "OLANZAPINE (DISINTEGRATING TABLET)",
+                "Olanzapine (Disintegrating Tablet)",
+                "ZYPREXA ZYDIS",
+                "Zyprexa Zydis",
+                "olanzapine  disintegrating tablet",
+                "olanzapine (disintegrating tablet)",
+                "olanzapine disintegrating tablet",
+                "zyprexa zydis"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 85
+            },
+            {
+              "id": "MED:*nf* cetirizine",
+              "name": "*nf* cetirizine",
+              "type": "Medication",
+              "aliases": [
+                "*NF* CETIRIZINE",
+                "*Nf* Cetirizine",
+                "*nf* cetirizine",
+                "ZYRTEC",
+                "Zyrtec",
+                "nf  cetirizine",
+                "nf cetirizine",
+                "zyrtec"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 76
+            },
+            {
+              "id": "MED:*nf* cetirizine",
+              "name": "*nf* cetirizine",
+              "type": "Medication",
+              "aliases": [
+                "*NF* CETIRIZINE",
+                "*Nf* Cetirizine",
+                "*nf* cetirizine",
+                "ZYRTEC",
+                "Zyrtec",
+                "nf  cetirizine",
+                "nf cetirizine",
+                "zyrtec"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 76
+            }
+          ]
+        },
+        {
+          "mention": "Respiratory depression",
+          "type": "Symptom",
+          "start": 849,
+          "end": 871,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "Suicidal ideation",
+          "type": "Symptom",
+          "start": 668,
+          "end": 685,
+          "linked_entity": {
+            "id": "ICD9:V6284",
+            "name": "suicidal ideation",
+            "type": "Disease",
+            "aliases": [
+              "SUICIDAL IDEATION",
+              "Suicidal Ideation",
+              "suicidal ideation"
+            ],
+            "definition": null,
+            "source": "diagnosis",
+            "score": 106
+          },
+          "candidates": [
+            {
+              "id": "ICD9:V6284",
+              "name": "suicidal ideation",
+              "type": "Disease",
+              "aliases": [
+                "SUICIDAL IDEATION",
+                "Suicidal Ideation",
+                "suicidal ideation"
+              ],
+              "definition": null,
+              "source": "diagnosis",
+              "score": 106
+            }
+          ],
+          "gold_entity_id": "ICD9:V6284"
+        },
+        {
+          "mention": "Primary psychiatrist",
+          "type": "Anatomy",
+          "start": 898,
+          "end": 918,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "Intensive Care Unit",
+          "type": "Anatomy",
+          "start": 1105,
+          "end": 1124,
+          "linked_entity": null,
+          "candidates": []
+        },
         {
           "mention": "Hypertension",
           "type": "Disease",
@@ -2287,8 +2994,16 @@
           ]
         },
         {
+          "mention": "Psychiatry",
+          "type": "Other",
+          "start": 5085,
+          "end": 5095,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
           "mention": "Myosis",
-          "type": "Symptom",
+          "type": "Anatomy",
           "start": 4392,
           "end": 4398,
           "linked_entity": {
@@ -2360,129 +3075,523 @@
           ]
         },
         {
-          "mention": "Psychiatry",
-          "type": "Procedure",
-          "start": 5085,
-          "end": 5095,
+          "mention": "Respiratory compromise",
+          "type": "Symptom",
+          "start": 4298,
+          "end": 4320,
           "linked_entity": null,
           "candidates": []
         },
         {
-          "mention": "Emergency Department",
-          "type": "Anatomy",
-          "start": 4514,
-          "end": 4534,
+          "mention": "Gastric lavaged",
+          "type": "Procedure",
+          "start": 4465,
+          "end": 4480,
           "linked_entity": {
-            "id": "ADMINMED:emergency dept",
-            "name": "emergency dept",
+            "id": "ADMINMED:gastric meds",
+            "name": "gastric meds",
             "type": "Medication",
             "aliases": [
-              "EMERGENCY DEPT",
-              "Emergency Dept",
-              "emergency dept"
+              "GASTRIC MEDS",
+              "Gastric Meds",
+              "gastric meds"
             ],
             "definition": null,
             "source": "inputevents",
-            "score": 90
+            "score": 82
           },
           "candidates": [
             {
-              "id": "ADMINMED:emergency dept",
-              "name": "emergency dept",
+              "id": "ADMINMED:gastric meds",
+              "name": "gastric meds",
               "type": "Medication",
               "aliases": [
-                "EMERGENCY DEPT",
-                "Emergency Dept",
-                "emergency dept"
+                "GASTRIC MEDS",
+                "Gastric Meds",
+                "gastric meds"
               ],
               "definition": null,
               "source": "inputevents",
-              "score": 90
+              "score": 82
             },
             {
-              "id": "ADMINMED:emergency dept",
-              "name": "emergency dept",
+              "id": "ADMINMED:gastric meds",
+              "name": "gastric meds",
               "type": "Medication",
               "aliases": [
-                "EMERGENCY DEPT",
-                "Emergency Dept",
-                "emergency dept"
+                "GASTRIC MEDS",
+                "Gastric Meds",
+                "gastric meds"
               ],
               "definition": null,
               "source": "inputevents",
-              "score": 90
+              "score": 82
             },
             {
-              "id": "ADMINMED:emergency dept",
-              "name": "emergency dept",
+              "id": "ADMINMED:gastric meds",
+              "name": "gastric meds",
               "type": "Medication",
               "aliases": [
-                "EMERGENCY DEPT",
-                "Emergency Dept",
-                "emergency dept"
+                "GASTRIC MEDS",
+                "Gastric Meds",
+                "gastric meds"
               ],
               "definition": null,
               "source": "inputevents",
-              "score": 90
+              "score": 82
             },
             {
-              "id": "ADMINMED:emergency dept",
-              "name": "emergency dept",
+              "id": "ADMINMED:gastric meds",
+              "name": "gastric meds",
               "type": "Medication",
               "aliases": [
-                "EMERGENCY DEPT",
-                "Emergency Dept",
-                "emergency dept"
+                "GASTRIC MEDS",
+                "Gastric Meds",
+                "gastric meds"
               ],
               "definition": null,
               "source": "inputevents",
-              "score": 90
+              "score": 82
             }
           ]
         },
         {
-          "mention": "Intensive Care Unit",
+          "mention": "Charcoaled",
           "type": "Procedure",
-          "start": 4543,
-          "end": 4562,
-          "linked_entity": null,
-          "candidates": []
+          "start": 4482,
+          "end": 4492,
+          "linked_entity": {
+            "id": "MED:charcoal-sorbitol",
+            "name": "charcoal-sorbitol",
+            "type": "Medication",
+            "aliases": [
+              "CHARCOAL",
+              "CHARCOAL-SORBITOL",
+              "Charcoal",
+              "Charcoal-Sorbitol",
+              "charcoal",
+              "charcoal sorbitol",
+              "charcoal-sorbitol",
+              "charcoalsorbitol"
+            ],
+            "definition": null,
+            "source": "prescriptions",
+            "score": 93
+          },
+          "candidates": [
+            {
+              "id": "MED:charcoal-sorbitol",
+              "name": "charcoal-sorbitol",
+              "type": "Medication",
+              "aliases": [
+                "CHARCOAL",
+                "CHARCOAL-SORBITOL",
+                "Charcoal",
+                "Charcoal-Sorbitol",
+                "charcoal",
+                "charcoal sorbitol",
+                "charcoal-sorbitol",
+                "charcoalsorbitol"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 93
+            },
+            {
+              "id": "MED:charcoal-sorbitol",
+              "name": "charcoal-sorbitol",
+              "type": "Medication",
+              "aliases": [
+                "CHARCOAL",
+                "CHARCOAL-SORBITOL",
+                "Charcoal",
+                "Charcoal-Sorbitol",
+                "charcoal",
+                "charcoal sorbitol",
+                "charcoal-sorbitol",
+                "charcoalsorbitol"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 93
+            },
+            {
+              "id": "MED:charcoal-sorbitol",
+              "name": "charcoal-sorbitol",
+              "type": "Medication",
+              "aliases": [
+                "CHARCOAL",
+                "CHARCOAL-SORBITOL",
+                "Charcoal",
+                "Charcoal-Sorbitol",
+                "charcoal",
+                "charcoal sorbitol",
+                "charcoal-sorbitol",
+                "charcoalsorbitol"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 93
+            },
+            {
+              "id": "MED:charcoal-sorbitol",
+              "name": "charcoal-sorbitol",
+              "type": "Medication",
+              "aliases": [
+                "CHARCOAL",
+                "CHARCOAL-SORBITOL",
+                "Charcoal",
+                "Charcoal-Sorbitol",
+                "charcoal",
+                "charcoal sorbitol",
+                "charcoal-sorbitol",
+                "charcoalsorbitol"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 93
+            },
+            {
+              "id": "MED:charcoal-sorbitol",
+              "name": "charcoal-sorbitol",
+              "type": "Medication",
+              "aliases": [
+                "CHARCOAL",
+                "CHARCOAL-SORBITOL",
+                "Charcoal",
+                "Charcoal-Sorbitol",
+                "charcoal",
+                "charcoal sorbitol",
+                "charcoal-sorbitol",
+                "charcoalsorbitol"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 93
+            },
+            {
+              "id": "MED:charcoal-sorbitol",
+              "name": "charcoal-sorbitol",
+              "type": "Medication",
+              "aliases": [
+                "CHARCOAL",
+                "CHARCOAL-SORBITOL",
+                "Charcoal",
+                "Charcoal-Sorbitol",
+                "charcoal",
+                "charcoal sorbitol",
+                "charcoal-sorbitol",
+                "charcoalsorbitol"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 93
+            },
+            {
+              "id": "MED:charcoal-sorbitol",
+              "name": "charcoal-sorbitol",
+              "type": "Medication",
+              "aliases": [
+                "CHARCOAL",
+                "CHARCOAL-SORBITOL",
+                "Charcoal",
+                "Charcoal-Sorbitol",
+                "charcoal",
+                "charcoal sorbitol",
+                "charcoal-sorbitol",
+                "charcoalsorbitol"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 93
+            },
+            {
+              "id": "MED:charcoal-sorbitol",
+              "name": "charcoal-sorbitol",
+              "type": "Medication",
+              "aliases": [
+                "CHARCOAL",
+                "CHARCOAL-SORBITOL",
+                "Charcoal",
+                "Charcoal-Sorbitol",
+                "charcoal",
+                "charcoal sorbitol",
+                "charcoal-sorbitol",
+                "charcoalsorbitol"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 93
+            }
+          ]
         },
         {
-          "mention": "Psychiatry",
-          "type": "Test",
-          "start": 5085,
-          "end": 5095,
+          "mention": "Extubated",
+          "type": "Procedure",
+          "start": 4693,
+          "end": 4702,
           "linked_entity": null,
           "candidates": []
         }
       ],
       "metrics": {
-        "total_entities": 8,
-        "successful_links": 5,
-        "linking_accuracy": 0.625
-      }
-    },
-    {
-      "subject_id": 23,
-      "category": "Nursing",
-      "text": "78 year old, pleasant male. Resection of known meningioma, which was diagnosed 3 years ago. Recently, patient was working in his garage and began to feel his right leg becoming numb and heavy. He began to have a seizure with shaking to his right leg, later his right arm. Taken by ambulance to hospital, then transferred to . Neoplasm, Brain Assessment: AAO x 3. Pleasant. Afebrile. Minimal pain only to neck where central line was inserted. Administered 650mg Tylenol as ordered. MAE x 4 strongly against resistance. Right leg weaker than left. States that at times, right leg feels numb. Able to discriminate between sharp and dull from left to right sides of body from head to toe correctly. Head CT completed this evening. Hypertensive with SBP >140. Initially Nitriprusside started, then transitioned to Nicardipine gtt. Goal for SBP <140. Maintained well with Nicardipine gtt. Pt hadn t taken PO anti-hypertensive meds this am. Administered as ordered this afternoon. Goal would be to administer PM meds tonight and titrate off Nicardipine. Lungs clear with diminished bases on 2L NC. No cough or expectoration of secretions. Encouraged patient to cough and deep breath. Abdomen soft, non-tender, positive bowel sounds throughout abdomen. Taking PO liquids well. advance diet as tolerated. Skin intact. Surgical incision to superior occipital area, linear saggital incision closed with surgical staples and dermabond. Some scant serous drainage noted on pillow. Per Neuro sx team, can be left OTA. Plan: Maintain SBP < 140. Titrate off Nicardipine gtt. Monitor neuro status closely. Continue pulmonary toileting. Advance diet as tolerated.",
-      "entities": [],
-      "metrics": {
-        "total_entities": 0,
-        "successful_links": 0,
-        "linking_accuracy": 0.0
+        "total_entities": 19,
+        "successful_links": 11,
+        "linking_accuracy": 0.5789473684210527,
+        "num_entities_with_gold": 1,
+        "metrics_at_k": {
+          "1": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "3": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5
+          },
+          "5": {
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.33333333333333337
+          },
+          "10": {
+            "precision": 0.1,
+            "recall": 1.0,
+            "f1": 0.18181818181818182
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 1,
+            "pred": 1,
+            "relevant": 1
+          },
+          "3": {
+            "hits": 1,
+            "pred": 3,
+            "relevant": 1
+          },
+          "5": {
+            "hits": 1,
+            "pred": 5,
+            "relevant": 1
+          },
+          "10": {
+            "hits": 1,
+            "pred": 10,
+            "relevant": 1
+          }
+        }
       }
     },
     {
       "subject_id": 23,
       "category": "Nursing",
       "text": "HPI: 75yo RHM with CAD s/p CABG x4, AS, HTN, HLD w/ Sx 3yr ago w/ dizziness. Evaluated in where a head CT revealed L frontal extraxial mass (~2cm per pt). 6wk ago w/episode RLE \"gave way\" and occasionally \"feels like wood.\" MRI scan w/enlargement of mass, per records 2.5x3.4x2cm L frontal lobe extraaxial mass, in addition to much smaller 12mmx8mmx4mm mass in R temporal lobe (per report). He was started on decadron 1mg . Chief complaint: PMHx: PMH: parasagittal meningioma, seizure, CAD, s/p CABG (), AS, HLD, HTN, hypothyroid PSH: CABG x4(), appy, anal fissure repair, CCY, L knee surgery, TURP Cancer (Malignant Neoplasm), Brain Assessment: VSS. Afebrile. Sbp running below 140 systolic. Pt alert and oriented x3. Pupils equal and briskly reactive bilaterally to light. Moving all extremities with normal strength. Lungs cta bilaterally. Abd soft, posititive bowel sounds, bm x1. Tolerating regular diet. U/o adequate via foley. Action: Frequent neuro checks. Diabetic management per ssri and md s orders. Nicardipine weaned off. Response: Neuro checks remain within normal limits. Sbp remains within ordered parameters. Plan: report called to floor transfer when bed available.",
+      "entities": [
+        {
+          "mention": "checks",
+          "type": "Disease",
+          "start": 1051,
+          "end": 1057,
+          "linked_entity": null,
+          "candidates": []
+        },
+        {
+          "mention": "remain",
+          "type": "Symptom",
+          "start": 1058,
+          "end": 1064,
+          "linked_entity": {
+            "id": "MED:*nf* galantamine",
+            "name": "*nf* galantamine",
+            "type": "Medication",
+            "aliases": [
+              "*NF* GALANTAMINE",
+              "*Nf* Galantamine",
+              "*nf* galantamine",
+              "REMINYL",
+              "Reminyl",
+              "nf  galantamine",
+              "nf galantamine",
+              "reminyl"
+            ],
+            "definition": null,
+            "source": "prescriptions",
+            "score": 81
+          },
+          "candidates": [
+            {
+              "id": "MED:*nf* galantamine",
+              "name": "*nf* galantamine",
+              "type": "Medication",
+              "aliases": [
+                "*NF* GALANTAMINE",
+                "*Nf* Galantamine",
+                "*nf* galantamine",
+                "REMINYL",
+                "Reminyl",
+                "nf  galantamine",
+                "nf galantamine",
+                "reminyl"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 81
+            },
+            {
+              "id": "MED:*nf* galantamine",
+              "name": "*nf* galantamine",
+              "type": "Medication",
+              "aliases": [
+                "*NF* GALANTAMINE",
+                "*Nf* Galantamine",
+                "*nf* galantamine",
+                "REMINYL",
+                "Reminyl",
+                "nf  galantamine",
+                "nf galantamine",
+                "reminyl"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 81
+            },
+            {
+              "id": "MED:*nf* galantamine",
+              "name": "*nf* galantamine",
+              "type": "Medication",
+              "aliases": [
+                "*NF* GALANTAMINE",
+                "*Nf* Galantamine",
+                "*nf* galantamine",
+                "REMINYL",
+                "Reminyl",
+                "nf  galantamine",
+                "nf galantamine",
+                "reminyl"
+              ],
+              "definition": null,
+              "source": "prescriptions",
+              "score": 81
+            }
+          ]
+        },
+        {
+          "mention": "within",
+          "type": "Procedure",
+          "start": 1065,
+          "end": 1071,
+          "linked_entity": null,
+          "candidates": []
+        }
+      ],
+      "metrics": {
+        "total_entities": 3,
+        "successful_links": 1,
+        "linking_accuracy": 0.3333333333333333,
+        "num_entities_with_gold": 0,
+        "metrics_at_k": {
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "10": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "3": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "5": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "10": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          }
+        }
+      }
+    },
+    {
+      "subject_id": 23,
+      "category": "Nursing",
+      "text": "HPI: 75yo RHM with CAD s/p CABG x4, AS, HTN, HLD w/ Sx 3yr ago w/ dizziness. Evaluated in where a head CT revealed L frontal extraxial mass (~2cm per pt). 6wk ago w/episode RLE \"gave way\" and occasionally \"feels like wood.\" MRI scan w/enlargement of mass, per records 2.5x3.4x2cm L frontal lobe extraaxial mass, in addition to much smaller 12mmx8mmx4mm mass in R temporal lobe (per report). He was started on decadron 1mg . Chief complaint: PMHx: PMH: parasagittal meningioma, seizure, CAD, s/p CABG (), AS, HLD, HTN, hypothyroid PSH: CABG x4(), appy, anal fissure repair, CCY, L knee surgery, TURP Cancer (Malignant Neoplasm), Brain Assessment: Pt alert and oriented x3. Pupils equal and briskly reactive bilaterally to light. Moving all extremities with normal strength. Action: Response: Plan:",
       "entities": [],
       "metrics": {
         "total_entities": 0,
         "successful_links": 0,
-        "linking_accuracy": 0.0
+        "linking_accuracy": 0.0,
+        "num_entities_with_gold": 0,
+        "metrics_at_k": {
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "3": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "5": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "10": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "micro_counters_at_k": {
+          "1": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "3": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "5": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          },
+          "10": {
+            "hits": 0,
+            "pred": 0,
+            "relevant": 0
+          }
+        }
       }
     }
   ]
