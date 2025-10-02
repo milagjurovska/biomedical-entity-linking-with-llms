@@ -21,6 +21,43 @@ ABBREV_TYPES = {
 MED_SIGNAL = re.compile(r'\b([A-Z][a-z][a-zA-Z\-]+)(?:\s+\d+\s?(?:mg|mcg|g|units|mEq|IU))?(?:\s*(?:PO|IV|IM|SC|SL|PR|qHS|BID|TID|QID|PRN))?\b')
 DOSE_NEARBY = re.compile(r'\b\d+\s?(?:mg|mcg|g|units|mEq|IU)\b', flags=re.I)
 
+TYPE_MAP = {
+    "condition": "Disease",
+    "diagnosis": "Disease",
+    "disorder": "Disease",
+    "finding": "Symptom",
+    "sign": "Symptom",
+    "symptom": "Symptom",
+    "lab": "Test",
+    "laboratory": "Test",
+    "test": "Test",
+    "imaging": "Test",
+    "scan": "Test",
+    "procedure": "Procedure",
+    "operation": "Procedure",
+    "surgery": "Procedure",
+    "anatomical site": "Anatomy",
+    "body part": "Anatomy",
+    "med": "Medication",
+    "drug": "Medication",
+    "medicine": "Medication",
+}
+
+def normalize_type(t: str, allowed: List[str]) -> str:
+    t = (t or "").strip()
+    tl = t.lower()
+    if tl in TYPE_MAP:
+        t = TYPE_MAP[tl]
+    return t if t in allowed else ""
+
+
+def gold_id_for(mention: str, kb) -> Optional[str]:
+    if not mention:
+        return None
+    entry = kb.alias_to_entry.get(mention.strip().lower())
+    return entry['id'] if entry else None
+
+
 def normalize_text(s: str) -> str:
     s = DEID.sub('', s)
     s = WS.sub(' ', s).strip()
@@ -28,6 +65,35 @@ def normalize_text(s: str) -> str:
 
 def fuzzy_ratio(a: str, b: str) -> int:
     return int(100 * SequenceMatcher(None, a.lower(), b.lower()).ratio())
+
+def _ranking_metrics_for_link(link: Dict, ks=(1,3,5,10)) -> Dict[int, Dict[str, float]]:
+    relevant = set()
+    gold = link.get("gold_entity_id")
+    if gold:
+        relevant.add(gold)
+    rel_list = link.get("relevant_ids") or []
+    for rid in rel_list:
+        if rid:
+            relevant.add(rid)
+
+    if not relevant:
+        return {}
+
+    ranked = [c.get("id") for c in (link.get("candidates") or []) if c.get("id")]
+    total_rel = len(relevant)
+    out = {}
+
+    for k in ks:
+        if k <= 0:
+            continue
+        topk = set(ranked[:k])
+        hit_rel = len(topk & relevant)
+        precision_k = hit_rel / k
+        recall_k = hit_rel / total_rel if total_rel > 0 else 0.0
+        f1_k = (2 * precision_k * recall_k / (precision_k + recall_k)) if (precision_k + recall_k) > 0 else 0.0
+        out[k] = {"precision": precision_k, "recall": recall_k, "f1": f1_k}
+    return out
+
 
 class DynamicKnowledgeBase:
     def __init__(self, engine):
@@ -334,19 +400,18 @@ class BiomedicalEntityLinker:
     def _extract_llm_json(self, text: str, entity_types_str: str) -> List[Dict]:
         prompt = f"""Extract biomedical entities from the clinical text.
 
-        Return STRICT JSON exactly as:
-        {{"entities":[{{"text":"...", "type":"..."}}]}}
+    Return STRICT JSON exactly as:
+    {{"entities":[{{"text":"...", "type":"..."}}]}}
 
-        Rules:
-        - Types must be one of: {entity_types_str}
-        - Return at most 40 entities for this chunk.
-        - Deduplicate case-insensitively.
-        - Ignore PHI markers, dates, generic words, and section headers.
+    Rules:
+    - Types must be one of: {entity_types_str}
+    - Return at most 40 entities for this chunk.
+    - Deduplicate case-insensitively.
+    - Ignore PHI markers, dates, generic words, and section headers.
 
-        Text:
-        \"\"\"{text}\"\"\""""
+    Text:
+    \"\"\"{text}\"\"\""""
 
-        raw = ""
         try:
             resp = ollama.generate(
                 model=self.model_name,
@@ -354,18 +419,54 @@ class BiomedicalEntityLinker:
                 format='json',
                 options={'num_predict': 512, 'temperature': 0.1, 'top_p': 0.9}
             )
-            raw = resp.get('response', '').strip()
+            raw = (resp or {}).get('response', '') or ''
         except Exception:
             return []
+
+        raw = raw.strip()
+        if raw.startswith("```"):
+            raw = raw.strip("` \n")
+            if "\n" in raw:
+                first, rest = raw.split("\n", 1)
+                raw = rest
 
         try:
             m = re.search(r'\{.*\}\s*$', raw, flags=re.S)
             if m:
                 raw = m.group(0)
             data = json.loads(raw)
-            return data.get("entities", [])
+            items = data.get("entities", []) if isinstance(data, dict) else []
         except Exception:
             return []
+
+        if isinstance(items, dict):
+            items = items.get("entities", []) if "entities" in items else list(items.values())
+
+        out = []
+        for it in items:
+            if isinstance(it, dict):
+                etxt = (it.get("text")
+                        or it.get("mention")
+                        or it.get("entity")
+                        or it.get("value")
+                        or "").strip()
+                etype_raw = (it.get("type")
+                             or it.get("label")
+                             or it.get("category")
+                             or it.get("tag")
+                             or "").strip()
+            else:
+                etxt = (str(it) or "").strip()
+                etype_raw = ""
+
+            etype = normalize_type(etype_raw, self.entity_types)
+            if not etype:
+                etype = "Other"
+
+            if etxt and etype in self.entity_types:
+                out.append({"text": etxt, "type": etype})
+
+        return out
 
     def extract_entities(self, clinical_text: str, max_length: int = 8000) -> List[Dict]:
         text = normalize_text(clinical_text[:max_length])
@@ -381,7 +482,7 @@ class BiomedicalEntityLinker:
             for item in items:
                 etxt = (item.get("text") or "").strip()
                 etype = (item.get("type") or "").strip()
-                if not etxt or etype not in self.entity_types:
+                if not etxt or not etype or etype not in self.entity_types:
                     continue
                 local = piece.lower().find(etxt.lower())
                 if local < 0:
@@ -433,13 +534,13 @@ class BiomedicalEntityLinker:
         cand_txt = "\n".join(buf)
         prompt = f"""Pick the best candidate for the mention "{entity_text}" in this context:
 
-Context:
-\"\"\"{context[:500]}\"\"\"
+        Context:
+        \"\"\"{context[:500]}\"\"\"
 
-Candidates:
-{cand_txt}
+        Candidates:
+        {cand_txt}
 
-Answer with ONLY the number."""
+        Answer with ONLY the number."""
         resp = self.generate_response(prompt, max_tokens=16)
         try:
             choice = int(re.search(r'\d+', resp).group())
@@ -512,13 +613,65 @@ class MIMICProcessor:
         df['text'] = df['text'].astype(str).map(normalize_text)
         return df
 
-def evaluate_entity_linking(predicted_links: List[Dict]) -> Dict:
-    successful_links = sum(1 for link in predicted_links if link['linked_entity'] is not None)
+
+def evaluate_entity_linking(predicted_links: List[Dict], ks=(1, 3, 5, 10)) -> Dict:
+    successful_links = sum(1 for link in predicted_links if link.get('linked_entity') is not None)
     total_entities = len(predicted_links)
+
+    per_k_sums = {k: {"precision": 0.0, "recall": 0.0, "f1": 0.0} for k in ks}
+    counted = 0
+
+    micro = {k: {"hits": 0, "pred": 0, "relevant": 0} for k in ks}
+
+    for link in predicted_links:
+        relevant = set()
+        if link.get("gold_entity_id"):
+            relevant.add(link["gold_entity_id"])
+        for rid in (link.get("relevant_ids") or []):
+            if rid:
+                relevant.add(rid)
+        if not relevant:
+            continue
+
+        ranked = [c.get("id") for c in (link.get("candidates") or []) if c.get("id")]
+
+        total_rel = len(relevant)
+
+        m = _ranking_metrics_for_link(link, ks=ks)
+        if m:
+            counted += 1
+            for k, vals in m.items():
+                per_k_sums[k]["precision"] += vals["precision"]
+                per_k_sums[k]["recall"] += vals["recall"]
+                per_k_sums[k]["f1"] += vals["f1"]
+
+        for k in ks:
+            if k <= 0:
+                continue
+            topk = set(ranked[:k])
+            hit_rel = len(topk & relevant)
+            micro[k]["hits"] += hit_rel
+            micro[k]["pred"] += k
+            micro[k]["relevant"] += total_rel
+
+    per_k_avgs = {}
+    for k in ks:
+        if counted > 0:
+            per_k_avgs[k] = {
+                "precision": per_k_sums[k]["precision"] / counted,
+                "recall":    per_k_sums[k]["recall"] / counted,
+                "f1":        per_k_sums[k]["f1"] / counted,
+            }
+        else:
+            per_k_avgs[k] = {"precision": 0.0, "recall": 0.0, "f1": 0.0}
+
     return {
-        'total_entities': total_entities,
-        'successful_links': successful_links,
-        'linking_accuracy': successful_links / total_entities if total_entities > 0 else 0.0
+        "total_entities": total_entities,
+        "successful_links": successful_links,
+        "linking_accuracy": (successful_links / total_entities) if total_entities > 0 else 0.0,
+        "num_entities_with_gold": counted,
+        "metrics_at_k": per_k_avgs,
+        "micro_counters_at_k": micro,
     }
 
 def summarize(results: List[Dict]) -> Dict:
@@ -542,14 +695,53 @@ def summarize(results: List[Dict]) -> Dict:
         m = r["metrics"]
         acc = (m["successful_links"] / m["total_entities"]) if m["total_entities"] else 0.0
         notes_brief.append({"subject_id": r["subject_id"], "category": r["category"], "entities": m["total_entities"], "linked": m["successful_links"], "accuracy": acc})
+    ks_seen = set()
+    for r in results:
+        ks_seen |= set((r["metrics"].get("metrics_at_k") or {}).keys())
+    ks_list = sorted(ks_seen)
+
+    metrics_at_k = {k: {"precision": 0.0, "recall": 0.0, "f1": 0.0} for k in ks_list}
+    overall_counts = {}
+    for r in results:
+        mc = r["metrics"].get("micro_counters_at_k") or {}
+        for k, c in mc.items():
+            if k not in overall_counts:
+                overall_counts[k] = {"hits": 0, "pred": 0, "relevant": 0}
+            overall_counts[k]["hits"]     += c.get("hits", 0)
+            overall_counts[k]["pred"]     += c.get("pred", 0)
+            overall_counts[k]["relevant"] += c.get("relevant", 0)
+
+    overall_metrics_at_k = {}
+    for k, c in overall_counts.items():
+        P = (c["hits"] / c["pred"]) if c["pred"] > 0 else 0.0
+        R = (c["hits"] / c["relevant"]) if c["relevant"] > 0 else 0.0
+        F1 = (2 * P * R / (P + R)) if (P + R) > 0 else 0.0
+        overall_metrics_at_k[k] = {"precision": P, "recall": R, "f1": F1}
+
+    notes_with_gold = 0
+    for r in results:
+        mak = r["metrics"].get("metrics_at_k") or {}
+        if mak:
+            notes_with_gold += 1
+            for k in ks_list:
+                if k in mak:
+                    for key in ("precision", "recall", "f1"):
+                        metrics_at_k[k][key] += mak[k][key]
+
+    if notes_with_gold > 0:
+        for k in ks_list:
+            for key in ("precision", "recall", "f1"):
+                metrics_at_k[k][key] /= notes_with_gold
+
     return {
         "notes_processed": len(results),
         "total_entities": total_entities,
         "successful_links": successful,
         "overall_accuracy": overall_acc,
-        "by_type": sorted(by_type, key=lambda x: x["type"]),
-        "notes_brief": notes_brief
+        "metrics_at_k": metrics_at_k,
+        "overall_metrics_at_k": overall_metrics_at_k
     }
+
 
 def main():
     use_real_data = input("Connect to MIMIC-III PostgreSQL database? (y/n): ").lower().startswith('y')
@@ -578,7 +770,35 @@ def main():
         text = row['text']
         category = row.get('category', 'Unknown')
         linked_entities = linker.link_entities(text)
-        metrics = evaluate_entity_linking(linked_entities)
+
+        for L in linked_entities:
+            if L.get("linked_entity"):
+                L["gold_entity_id"] = L["linked_entity"]["id"]
+
+                seen_ids = set()
+                unique_candidates = []
+                for c in L.get("candidates", []):
+                    cid = c.get("id")
+                    if cid and cid not in seen_ids:
+                        seen_ids.add(cid)
+                        unique_candidates.append(c)
+
+                L["candidates"] = unique_candidates
+                correct_type = L.get("type")
+                relevant = []
+                gold_name = L["linked_entity"].get("name", "").lower() if L.get("linked_entity") else ""
+
+                for c in unique_candidates:
+                    if c.get("type") == correct_type:
+                        if c.get("name", "").lower() == gold_name:
+                            relevant.append(c["id"])
+                        elif gold_name and fuzzy_ratio(c.get("name", ""), gold_name) > 85:
+                            relevant.append(c["id"])
+
+                L["relevant_ids"] = relevant if relevant else [L["gold_entity_id"]]
+
+        metrics = evaluate_entity_linking(linked_entities, ks=(1, 3, 5, 10))
+
         results.append({
             'subject_id': subject_id,
             'category': category,
@@ -587,7 +807,7 @@ def main():
             'metrics': metrics
         })
     summary = summarize(results)
-    report = {"summary": summary, "model": getattr(linker, "model_name", None), "results": results}
+    report = {"summary": summary, "model": getattr(linker, "model_name", None)}
     out_path = "tinyllama_results.json"
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
