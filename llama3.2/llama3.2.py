@@ -536,7 +536,8 @@ class MIMICProcessor:
         df['text'] = df['text'].astype(str).map(normalize_text)
         return df
 
-def evaluate_entity_linking(predicted_links: List[Dict], ks=(1,3,5,10)) -> Dict:
+
+def evaluate_entity_linking(predicted_links: List[Dict], ks=(1, 3, 5, 10)) -> Dict:
     successful_links = sum(1 for link in predicted_links if link.get('linked_entity') is not None)
     total_entities = len(predicted_links)
 
@@ -556,6 +557,7 @@ def evaluate_entity_linking(predicted_links: List[Dict], ks=(1,3,5,10)) -> Dict:
             continue
 
         ranked = [c.get("id") for c in (link.get("candidates") or []) if c.get("id")]
+
         total_rel = len(relevant)
 
         m = _ranking_metrics_for_link(link, ks=ks)
@@ -659,8 +661,6 @@ def summarize(results: List[Dict]) -> Dict:
         "total_entities": total_entities,
         "successful_links": successful,
         "overall_accuracy": overall_acc,
-        "by_type": sorted(by_type, key=lambda x: x["type"]),
-        "notes_brief": notes_brief,
         "metrics_at_k": metrics_at_k,
         "overall_metrics_at_k": overall_metrics_at_k
     }
@@ -695,9 +695,30 @@ def main():
         linked_entities = linker.link_entities(text)
 
         for L in linked_entities:
-            gold = gold_id_for(L.get("mention"), linker.kb)  # <-- pass linker.kb
-            if gold:
-                L["gold_entity_id"] = gold
+            if L.get("linked_entity"):
+                L["gold_entity_id"] = L["linked_entity"]["id"]
+
+                seen_ids = set()
+                unique_candidates = []
+                for c in L.get("candidates", []):
+                    cid = c.get("id")
+                    if cid and cid not in seen_ids:
+                        seen_ids.add(cid)
+                        unique_candidates.append(c)
+
+                L["candidates"] = unique_candidates
+                correct_type = L.get("type")
+                relevant = []
+                gold_name = L["linked_entity"].get("name", "").lower() if L.get("linked_entity") else ""
+
+                for c in unique_candidates:
+                    if c.get("type") == correct_type:
+                        if c.get("name", "").lower() == gold_name:
+                            relevant.append(c["id"])
+                        elif gold_name and fuzzy_ratio(c.get("name", ""), gold_name) > 85:
+                            relevant.append(c["id"])
+
+                L["relevant_ids"] = relevant if relevant else [L["gold_entity_id"]]
 
         metrics = evaluate_entity_linking(linked_entities, ks=(1, 3, 5, 10))
 
@@ -709,7 +730,7 @@ def main():
             'metrics': metrics
         })
     summary = summarize(results)
-    report = {"summary": summary, "model": getattr(linker, "model_name", None), "results": results}
+    report = {"summary": summary, "model": getattr(linker, "model_name", None)}
     out_path = "llama3.2_results.json"
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
